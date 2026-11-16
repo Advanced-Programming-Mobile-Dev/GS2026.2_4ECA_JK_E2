@@ -1,0 +1,67 @@
+# =====================================================================
+#  Rede Comunitária Vila Aurora - laboratório
+#  Etapa 1: PKI + broker da borda (UBS) com mTLS + 1 sensor simulado
+# =====================================================================
+name: vila-aurora
+
+x-host-user: &host-user
+  # Containers Python rodam com o UID/GID do seu usuário (não root),
+  # para ler as chaves privadas 0600 geradas pela PKI.
+  user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+
+services:
+  # --------------------------------------------------------- BORDA (UBS)
+  edge-ubs-broker:
+    image: eclipse-mosquitto:2.0
+    container_name: edge-ubs-broker
+    hostname: edge-ubs-broker
+    environment:
+      TZ: UTC
+    volumes:
+      - ./edge/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./edge/mosquitto/acl/ubs.acl:/mosquitto/config/acl:ro
+      - ./pki/out/certs/edge-ubs-broker/ca.crt:/mosquitto/certs/ca.crt:ro
+      - ./pki/out/certs/edge-ubs-broker/edge-ubs-broker.crt:/mosquitto/certs/broker.crt:ro
+      - ./pki/out/certs/edge-ubs-broker/edge-ubs-broker.key:/mosquitto/certs/broker.key:ro
+      - ./pki/out/crl:/mosquitto/crl:ro
+    networks:
+      - seg-iot-ubs
+    restart: unless-stopped
+
+  # --------------------------------------------------------- CAMPO (UBS)
+  ubs-camara-fria-01:
+    <<: *host-user
+    build: ./field
+    container_name: ubs-camara-fria-01
+    environment:
+      DEVICE_ID: ubs-camara-fria-01
+      SPACE: ubs
+      SENSOR: camara_fria
+      BROKER_HOST: edge-ubs-broker
+      CERT_DIR: /certs
+      INTERVAL: "5"
+    volumes:
+      - ./pki/out/certs/ubs-camara-fria-01:/certs:ro
+    networks:
+      - seg-iot-ubs
+    depends_on:
+      - edge-ubs-broker
+    restart: unless-stopped
+
+  # ------------------------------------------- FERRAMENTAS DE TESTE (sob demanda)
+  tools:
+    <<: *host-user
+    build: ./tools
+    profiles: ["tools"]
+    environment:
+      HOME: /tmp
+    volumes:
+      - ./pki/out/certs:/pki/certs:ro
+      - ./docs/evidencias:/evidencias
+    networks:
+      - seg-iot-ubs
+
+networks:
+  # Segmento IoT da UBS: rede interna, sem rota para a internet (RT-07).
+  seg-iot-ubs:
+    internal: true
