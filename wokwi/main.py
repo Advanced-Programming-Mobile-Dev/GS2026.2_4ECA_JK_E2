@@ -8,9 +8,9 @@ import os
 from machine import Pin, ADC
 from umqtt.simple import MQTTClient
 
-DEVICE_ID    = "escola-nivel-01"
-TOPIC_PREFIX = "vilaaurora-lab/295c03884753dc02"
-HMAC_KEY_HEX = "8c208e793dca7cbb6f8666a9b30cdb1c9f9c6f0664d81a9c9f43c67752b0e586"
+DEVICE_ID = "escola-nivel-01"
+TOPIC_PREFIX = "COLE_AQUI"
+HMAC_KEY_HEX = "COLE_AQUI"
 
 WIFI_SSID = "Wokwi-GUEST"
 WIFI_PASSWORD = ""

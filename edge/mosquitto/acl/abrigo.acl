@@ -11,3 +11,10 @@ pattern read  va/abrigo/cmd/%u
 # Auditor de laboratório: somente leitura (testes e evidências).
 user lab-auditor
 topic read va/#
+
+# Agente da borda: lê a telemetria do espaço, envia comandos locais
+# (ex.: liberar porta, ligar bomba) e publica alarmes locais.
+user edge-abrigo-agent
+topic read  va/abrigo/telemetry/#
+topic write va/abrigo/cmd/#
+topic write va/abrigo/alarm/#

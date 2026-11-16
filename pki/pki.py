@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import argparse
+import base64
 import datetime as dt
+import ipaddress
 import getpass
 import json
 import os
@@ -13,7 +15,7 @@ from pathlib import Path
 
 from cryptography import x509
 from cryptography.hazmat.primitives import hashes, serialization
-from cryptography.hazmat.primitives.asymmetric import ec
+from cryptography.hazmat.primitives.asymmetric import ec, x25519
 from cryptography.x509.oid import ExtendedKeyUsageOID, NameOID
 
 ROOT = Path(__file__).resolve().parent
@@ -23,6 +25,7 @@ CERTS_DIR = OUT / "certs"
 CRL_DIR = OUT / "crl"
 INDEX_FILE = CA_DIR / "index.json"
 HMAC_DIR = OUT / "hmac"
+WG_DIR = OUT / "wg"
 INVENTORY_FILE = ROOT / "inventory.json"
 
 ORG = "Rede Comunitaria Vila Aurora"
@@ -166,6 +169,14 @@ def build_crl(ca_cert, ca_key, index: dict) -> None:
 
 
 # ------------------------------------------------------------------- emissão
+def san_entry(value: str) -> x509.GeneralName:
+    """SAN de IP (ex.: 10.13.13.1, endereço da nuvem na VPN) ou de nome DNS."""
+    try:
+        return x509.IPAddress(ipaddress.ip_address(value))
+    except ValueError:
+        return x509.DNSName(value)
+
+
 def issue(name: str, kind: str, sans: list[str], ca_cert, ca_key, index: dict) -> None:
     if kind not in KINDS:
         sys.exit(f"Tipo inválido: {kind}. Use {KINDS}.")
@@ -216,7 +227,7 @@ def issue(name: str, kind: str, sans: list[str], ca_cert, ca_key, index: dict) -
     )
     if sans:
         builder = builder.add_extension(
-            x509.SubjectAlternativeName([x509.DNSName(s) for s in sans]), critical=False
+            x509.SubjectAlternativeName([san_entry(s) for s in sans]), critical=False
         )
     cert = builder.sign(ca_key, hashes.SHA256())
 
@@ -269,6 +280,85 @@ def cmd_issue_all(_args) -> None:
             print(f"[pular] {item['name']} já tem chave HMAC (use 'hmac-rotate' para trocar).")
         else:
             make_hmac(item["name"])
+    if "wireguard" in inventory:
+        make_wireguard(inventory["wireguard"])
+
+
+# ------------------------------------------------------------------ WireGuard
+# Chaves Curve25519 (X25519) da VPN borda <-> nuvem (RT-06). Cada borda só
+# tem rota para o IP da nuvem (AllowedIPs /32): as bordas não se enxergam.
+# PresharedKey por par: camada simétrica extra (resistência pós-quântica).
+def b64(raw: bytes) -> str:
+    return base64.b64encode(raw).decode()
+
+
+def wg_keypair() -> dict:
+    key = x25519.X25519PrivateKey.generate()
+    return {
+        "private": b64(key.private_bytes(serialization.Encoding.Raw,
+                                         serialization.PrivateFormat.Raw,
+                                         serialization.NoEncryption())),
+        "public": b64(key.public_key().public_bytes(serialization.Encoding.Raw,
+                                                    serialization.PublicFormat.Raw)),
+    }
+
+
+def make_wireguard(cfg: dict) -> None:
+    keys_file = WG_DIR / "keys.json"
+    remove_docker_artifact(keys_file)
+    keys = json.loads(keys_file.read_text()) if keys_file.is_file() else {}
+    server, peers = cfg["server"], cfg["peers"]
+    created = []
+    for name in [server["name"]] + [p["name"] for p in peers]:
+        if name not in keys:
+            keys[name] = wg_keypair()
+            created.append(name)
+    for p in peers:
+        psk_name = f"psk:{p['name']}"
+        if psk_name not in keys:
+            keys[psk_name] = {"psk": b64(secrets.token_bytes(32))}
+    write_file(keys_file, json.dumps(keys, indent=2).encode(), 0o600)
+
+    # configuração da nuvem: um [Peer] por borda
+    lines = ["# Gerado por pki.py - VPN WireGuard da Rede Vila Aurora (nuvem)",
+             "[Interface]",
+             f"Address = {server['address']}/24",
+             f"ListenPort = {server['port']}",
+             f"PrivateKey = {keys[server['name']]['private']}", ""]
+    for p in peers:
+        lines += [f"# {p['name']}", "[Peer]",
+                  f"PublicKey = {keys[p['name']]['public']}",
+                  f"PresharedKey = {keys['psk:' + p['name']]['psk']}",
+                  f"AllowedIPs = {p['address']}/32", ""]
+    write_file(WG_DIR / f"{server['name']}.conf", "\n".join(lines).encode(), 0o600)
+
+    # configuração de cada borda: só alcança o IP da nuvem
+    primary = server["endpoints"][0]
+    for p in peers:
+        lines = [f"# Gerado por pki.py - VPN WireGuard ({p['name']})",
+                 "[Interface]",
+                 f"Address = {p['address']}/32",
+                 f"PrivateKey = {keys[p['name']]['private']}", "",
+                 "[Peer]",
+                 f"PublicKey = {keys[server['name']]['public']}",
+                 f"PresharedKey = {keys['psk:' + p['name']]['psk']}",
+                 f"Endpoint = {primary}:{server['port']}",
+                 f"AllowedIPs = {server['address']}/32",
+                 "PersistentKeepalive = 15", ""]
+        write_file(WG_DIR / f"{p['name']}.conf", "\n".join(lines).encode(), 0o600)
+    print(f"[ok] wireguard {len(peers)} bordas + nuvem"
+          + (f" (chaves novas: {', '.join(created)})" if created else " (chaves mantidas)"))
+
+
+def cmd_wg_show(_args) -> None:
+    inventory = json.loads(INVENTORY_FILE.read_text(encoding="utf-8"))
+    cfg = inventory["wireguard"]
+    keys_file = WG_DIR / "keys.json"
+    keys = json.loads(keys_file.read_text()) if keys_file.is_file() else {}
+    print(f"{'nome':<22}{'IP na VPN':<14}chave pública")
+    for item in [cfg["server"]] + cfg["peers"]:
+        pub = keys.get(item["name"], {}).get("public", "(não gerada)")
+        print(f"{item['name']:<22}{item['address']:<14}{pub}")
 
 
 # ------------------------------------------------- dispositivos sem mTLS (Wokwi)
@@ -384,6 +474,8 @@ def main() -> None:
     p = sub.add_parser("hmac-rotate", help="gera nova chave HMAC para um ESP32 (Wokwi)")
     p.add_argument("name")
     p.set_defaults(func=cmd_hmac_rotate)
+
+    sub.add_parser("wg-show", help="mostra o plano de endereços da VPN").set_defaults(func=cmd_wg_show)
 
     args = parser.parse_args()
     args.func(args)

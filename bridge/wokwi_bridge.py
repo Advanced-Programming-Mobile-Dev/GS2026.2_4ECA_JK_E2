@@ -1,4 +1,29 @@
 #!/usr/bin/env python3
+"""
+Ponte Wokwi -> borda da escola (Rede Vila Aurora).
+
+O ESP32 do Wokwi (versão web gratuita) só alcança brokers públicos. Esta
+ponte é o ÚNICO componente com acesso ao broker público e ao segmento IoT
+da escola. Ela:
+
+  1. assina o tópico aleatório do ESP32 no broker público (TLS);
+  2. valida cada mensagem: assinatura HMAC-SHA256, contador de sequência
+     (anti-replay) e janela de tempo;
+  3. só então republica no broker da borda com o PRÓPRIO certificado
+     (mTLS), e a ACL só permite escrever em va/escola/telemetry/escola-nivel-01.
+
+Mensagens rejeitadas são registradas em log com o motivo (para o SIEM).
+
+Variáveis de ambiente:
+    HMAC_FILE        JSON gerado por 'pki.py' (device_id, key_hex, topic_prefix)
+    PUBLIC_BROKER    padrão broker.hivemq.com
+    PUBLIC_PORT      padrão 8883 (TLS)
+    EDGE_HOST        padrão edge-escola-broker
+    EDGE_PORT        padrão 8883
+    CERT_DIR         certificado da ponte (padrão /certs)
+    BRIDGE_ID        CN do certificado da ponte (padrão escola-wokwi-bridge)
+    MAX_SKEW_S       janela de tempo aceita, em segundos (padrão 300)
+"""
 from __future__ import annotations
 
 import hashlib
@@ -31,6 +56,8 @@ logging.basicConfig(
 )
 log = logging.getLogger("bridge")
 
+
+# ---------------------------------------------------------------- validação
 class Validator:
     """Valida o envelope {"body": "<json>", "sig": "<hex>"} enviado pelo ESP32."""
 

@@ -1,18 +1,4 @@
 #!/usr/bin/env python3
-"""
-Simulador de dispositivo de campo (sensor) da Rede Vila Aurora.
-
-Publica telemetria via MQTT sobre TLS com certificado próprio (mTLS).
-Configuração por variáveis de ambiente:
-
-    DEVICE_ID     identificador único (igual ao CN do certificado)
-    SPACE         espaço comunitário (ubs, escola, centro, horta, abrigo)
-    SENSOR        modelo do sensor (ver SENSOR_MODELS)
-    BROKER_HOST   host do broker da borda
-    BROKER_PORT   porta TLS (padrão 8883)
-    CERT_DIR      pasta com <DEVICE_ID>.crt, <DEVICE_ID>.key e ca.crt
-    INTERVAL      segundos entre leituras (padrão 5)
-"""
 from __future__ import annotations
 
 import json

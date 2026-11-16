@@ -11,3 +11,10 @@ pattern read  va/horta/cmd/%u
 # Auditor de laboratório: somente leitura (testes e evidências).
 user lab-auditor
 topic read va/#
+
+# Agente da borda: lê a telemetria do espaço, envia comandos locais
+# (ex.: liberar porta, ligar bomba) e publica alarmes locais.
+user edge-horta-agent
+topic read  va/horta/telemetry/#
+topic write va/horta/cmd/#
+topic write va/horta/alarm/#

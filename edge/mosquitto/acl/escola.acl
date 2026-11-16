@@ -16,3 +16,10 @@ topic read va/#
 # e só depois de validar a assinatura HMAC de cada mensagem.
 user escola-wokwi-bridge
 topic write va/escola/telemetry/escola-nivel-01
+
+# Agente da borda: lê a telemetria do espaço, envia comandos locais
+# (ex.: liberar porta, ligar bomba) e publica alarmes locais.
+user edge-escola-agent
+topic read  va/escola/telemetry/#
+topic write va/escola/cmd/#
+topic write va/escola/alarm/#

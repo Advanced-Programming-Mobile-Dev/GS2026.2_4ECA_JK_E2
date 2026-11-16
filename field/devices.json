@@ -7,7 +7,8 @@
   ],
   "escola": [
     {"id": "escola-turbidez-01", "sensor": "turbidez"},
-    {"id": "escola-cloro-01",    "sensor": "cloro_residual"}
+    {"id": "escola-cloro-01",    "sensor": "cloro_residual"},
+    {"id": "escola-bomba-01",    "sensor": "bomba"}
   ],
   "ubs": [
     {"id": "ubs-camara-fria-01", "sensor": "camara_fria"},

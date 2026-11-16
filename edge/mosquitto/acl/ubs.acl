@@ -11,3 +11,10 @@ pattern read  va/ubs/cmd/%u
 # Auditor de laboratório: somente leitura (testes e evidências).
 user lab-auditor
 topic read va/#
+
+# Agente da borda: lê a telemetria do espaço, envia comandos locais
+# (ex.: liberar porta, ligar bomba) e publica alarmes locais.
+user edge-ubs-agent
+topic read  va/ubs/telemetry/#
+topic write va/ubs/cmd/#
+topic write va/ubs/alarm/#

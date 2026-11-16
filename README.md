@@ -34,25 +34,35 @@ Escola, UBS, Horta/Cozinha Solidária e Abrigo de Emergência. Tudo é **simulad
 │   └── diagram.json            # circuito: ESP32 + potenciômetro + LED de alarme
 ├── bridge/
 │   └── wokwi_bridge.py         # ponte broker público -> borda da escola (valida HMAC e replay)
+├── edge/agent/
+│   ├── agent.py                # agente da borda: regras locais, buffer SQLite, uplink com failover
+│   └── entrypoint.sh           # sobe o túnel WireGuard e inicia o agente
+├── cloud/
+│   ├── wg/                     # gateway WireGuard da nuvem (10.13.13.1)
+│   ├── ingest/ingest.py        # ingestão HTTPS+mTLS, idempotente, só pelo túnel
+│   └── db/init/01-schema.sh    # tabela events e papéis de privilégio mínimo
 ├── tools/
 │   ├── mtls_check.py           # evidência de mTLS, CRL e ACL
-│   └── wokwi_attack.py         # forja, adulteração e replay contra a ponte
+│   ├── wokwi_attack.py         # forja, adulteração e replay contra a ponte
+│   └── inject_reading.py       # injeta uma leitura (ex.: câmara fria a 12 °C)
 └── docs/evidencias/            # saídas dos testes (JSON com hash)
 ```
 
-## Arquitetura do protótipo (até a etapa 2)
+## Arquitetura do protótipo (até a etapa 3)
 
 ```
- CAMPO                          BORDA (1 por espaço)               fora do lab
- field-centro  ──mTLS──▶ edge-centro-broker   [seg-iot-centro]
- field-escola  ──mTLS──▶ edge-escola-broker   [seg-iot-escola] ◀──mTLS── escola-wokwi-bridge ──TLS──▶ broker.hivemq.com ◀──TLS+HMAC── ESP32 (Wokwi)
- field-ubs     ──mTLS──▶ edge-ubs-broker      [seg-iot-ubs]
- field-horta   ──mTLS──▶ edge-horta-broker    [seg-iot-horta]
- field-abrigo  ──mTLS──▶ edge-abrigo-broker   [seg-iot-abrigo]
+ CAMPO              BORDA (1 por espaço)                         WAN simulada          NUVEM
+ field-<espaco> ─mTLS─▶ edge-<espaco>-broker ◀─mTLS─ edge-<espaco>-agent ══ WireGuard ══▶ cloud-wg (10.13.13.1)
+   [seg-iot-<espaco>, interno]                 regras locais     fibra (principal)        └ cloud-ingest (HTTPS+mTLS)
+                                               buffer SQLite     4G (alternativo)              └ postgres [seg-servicos]
+
+ ESP32 (Wokwi) ─TLS+HMAC─▶ broker.hivemq.com ◀─TLS─ escola-wokwi-bridge ─mTLS─▶ edge-escola-broker
 ```
 
 - Cada segmento IoT é uma rede Docker **interna**: sem internet e sem rota para os outros espaços.
-- A ponte do Wokwi é o **único** serviço com acesso à internet (`seg-wan`) e a um segmento IoT.
+- Os agentes de borda só alcançam a nuvem pelo túnel WireGuard, cada um só com rota para `10.13.13.1`.
+- A ingestão escuta **só** no IP da VPN, e o banco fica num segmento que nenhuma borda alcança.
+- A ponte do Wokwi é o **único** serviço com acesso à internet (`seg-wan`).
 - Nenhuma porta é publicada no host.
 
 ---
@@ -283,6 +293,167 @@ Esperado: os dois comandos falham com erro de resolução de nome ou de conexão
 
 ---
 
+## Etapa 3 — Borda autônoma, store-and-forward, VPN WireGuard e nuvem
+
+Atende: RT-01 (nó de borda por espaço), RT-02 (operação local, buffer e reconciliação),
+RT-03 (link alternativo e modo degradado), RT-06 (VPN WireGuard), RT-07 (segmentação),
+RT-08 (banco com privilégio mínimo e consultas parametrizadas) e RT-19 (pseudonimização).
+
+### O que roda em cada borda (`edge-<espaco>-agent`)
+
+| Função | Comportamento |
+|---|---|
+| Alarme da câmara fria (UBS) | fora de 2–8 °C → `ALARME LOCAL ATIVO`, sem depender da nuvem |
+| Alagamento (abrigo) | acima de 10 cm → alarme local |
+| Reservatório (escola, ESP32) | < 20 % → **liga a bomba**; ≥ 95 % → desliga. Vale mesmo se o agendamento remoto for adulterado (INC-VA-0712) |
+| Acesso por crachá (UBS, abrigo) | libera ou nega pela lista sintética (crachá desconhecido, bloqueado ou sem autorização no espaço) |
+| Buffer store-and-forward | todo evento vai para o SQLite **antes** de ser enviado; só sai do buffer com o "ok" da nuvem |
+| Failover | nuvem sem resposta por 30 s → troca o endpoint da VPN da fibra para o 4G; sem nenhum link → **modo degradado** |
+| Reconciliação | ao voltar, reenvia o buffer; a nuvem descarta duplicados pelo `msg_id` |
+| LGPD | o UID do crachá nunca sai da borda; vai para a nuvem só `HMAC-SHA256(pepper, uid)` |
+
+### 1. Preparar
+
+Crie o `.env` a partir do exemplo e **troque todos os valores**:
+
+```bat
+copy .env.example .env
+notepad .env
+```
+
+Confira se o Docker suporta WireGuard (deve imprimir `WIREGUARD_OK`):
+
+```bat
+docker run --rm --cap-add NET_ADMIN alpine sh -c "ip link add wg0 type wireguard && echo WIREGUARD_OK"
+```
+
+### 2. Identidades novas (sempre **antes** do `up`)
+
+```bat
+docker compose down
+python pki/pki.py issue-all
+python pki/pki.py wg-show
+```
+
+O `issue-all` cria os certificados dos 5 agentes, da bomba e da ingestão (com o IP
+`10.13.13.1` no SAN), e as chaves e configurações WireGuard (`pki/out/wg/`), com
+PresharedKey por borda.
+
+### 3. Subir tudo
+
+```bat
+docker compose up -d --build --remove-orphans
+docker compose --profile tools build tools
+docker compose ps
+```
+
+Esperado: os 5 brokers, os 5 simuladores, os 5 agentes, a ponte, `cloud-wg`,
+`cloud-ingest` e `postgres` com status `running`.
+
+### 4. Evidências da VPN e da segmentação
+
+```bat
+docker compose exec cloud-wg wg show
+docker compose exec edge-ubs-agent wg show
+docker compose logs --tail 5 cloud-ingest
+```
+
+Esperado:
+- a nuvem mostra os 5 peers com `latest handshake` recente e tráfego (`transfer`);
+- as chaves privadas e a PresharedKey não aparecem;
+- a ingestão registra lotes `lote agente=edge-...-agent novas=...`.
+
+Testes que devem falhar:
+
+```bat
+docker compose exec edge-ubs-agent python -c "import socket; socket.create_connection(('cloud-fibra', 8443), 3)"
+docker compose exec edge-ubs-agent python -c "import socket; socket.create_connection(('postgres', 5432), 3)"
+```
+
+O primeiro mostra que a ingestão não é alcançável **fora** do túnel (conexão recusada).
+O segundo mostra que a borda não enxerga o banco.
+
+### 5. Dados na nuvem, privilégio mínimo e pseudonimização
+
+```bat
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select space, kind, count(*) from events group by 1,2 order by 1,2;"
+docker compose exec postgres psql -U ingest_writer -d vilaaurora -c "select value from events limit 1;"
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select space, data->>'badge_hash' as cracha, data->>'decision' as decisao, data->>'reason' as motivo from events where kind='access' order by ts desc limit 5;"
+```
+
+Esperado:
+- contagens por espaço e tipo;
+- `permission denied` para o `ingest_writer`, que só pode inserir;
+- crachás aparecem só como pseudônimo, nunca com o UID.
+
+### 6. Regras locais
+
+Deixe os logs abertos:
+
+```bat
+docker compose logs -f edge-escola-agent edge-ubs-agent field-escola
+```
+
+- **Bomba** (ela começa ligada): no Wokwi, suba o potenciômetro até 95 % ou mais. Aparecem
+  `REGRA LOCAL: bomba DESLIGADA (... nivel_alto_evitar_transbordo)` e
+  `BOMBA DESLIGADA por edge-escola-agent`. Depois desça abaixo de 20 %: aparecem
+  `ALARME LOCAL ATIVO`, `REGRA LOCAL: bomba LIGADA (... nivel_baixo_reabastecer)` e
+  `BOMBA LIGADA`, e o LED do ESP32 acende.
+- **Câmara fria:** em outro terminal,
+  ```bat
+  docker compose --profile tools run --rm --user root tools python inject_reading.py ubs-camara-fria-01 camara_fria 12 C
+  ```
+  Esperado: `ALARME LOCAL ATIVO sensor=camara_fria ... valor=12.0C`.
+- **Acesso:** `docker compose logs --tail 20 edge-ubs-agent field-ubs` mostra `ACESSO LIBERADO/NEGADO`
+  e `porta LIBERADA/MANTIDA FECHADA`.
+
+### 7. Queda da fibra, modo degradado e reconciliação (UBS)
+
+Os nomes das redes começam com o nome do projeto. Confira:
+
+```bat
+docker network ls | findstr seg-wan
+```
+
+Deixe um terminal com `docker compose logs -f edge-ubs-agent` e use outro para os comandos.
+
+**1) A fibra cai.** Em ~30–40 s, a borda troca para o 4G (o `wg show` mostra o endpoint novo):
+
+```bat
+docker network disconnect vila-aurora_seg-wan-fibra edge-ubs-agent
+docker compose exec edge-ubs-agent wg show
+```
+
+**2) O 4G também cai.** A borda entra em MODO DEGRADADO, e o alarme local continua funcionando:
+
+```bat
+docker network disconnect vila-aurora_seg-wan-4g edge-ubs-agent
+docker compose --profile tools run --rm --user root tools python inject_reading.py ubs-camara-fria-01 camara_fria 12 C
+docker compose exec edge-ubs-agent python -c "import sqlite3; print('pendentes no buffer:', sqlite3.connect('/var/lib/agent/outbox.db').execute('select count(*) from outbox where sent_at is null').fetchone()[0])"
+```
+
+**3) Os links voltam.** Aparecem `LINK RESTABELECIDO` e a reconciliação do buffer:
+
+```bat
+docker network connect vila-aurora_seg-wan-fibra edge-ubs-agent
+docker network connect vila-aurora_seg-wan-4g edge-ubs-agent
+```
+
+| Momento | Linha esperada no log do `edge-ubs-agent` |
+|---|---|
+| fibra cai | `nuvem inacessivel via fibra` → `WAN: fibra -> 4g` |
+| 4G cai | `MODO DEGRADADO: nenhum link WAN responde; borda segue autonoma` |
+| câmara fria a 12 °C | `ALARME LOCAL ATIVO` (mesmo sem nuvem) |
+| links voltam | `LINK RESTABELECIDO` → `RECONCILIACAO ... duplicados=0` → `RECONCILIACAO concluida: buffer vazio, nenhum evento perdido` |
+
+Para provar que nada se perdeu nem duplicou:
+
+```bat
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select count(*) - count(distinct msg_id) as duplicados from events;"
+```
+
+---
+
 ## Limitações conhecidas
 
 - **ESP32 no Wokwi (plano gratuito):** sem o Private IoT Gateway (pago), o ESP32 não
@@ -300,7 +471,10 @@ Esperado: os dois comandos falham com erro de resolução de nome ou de conexão
 - A chave do broker é gravada com modo `0644` para o usuário `mosquitto` do container
   conseguir lê-la. Em produção, ela teria dono `mosquitto` e modo `0600`.
 - O Mosquitto só relê a CRL quando reinicia; por isso a revogação inclui um restart.
-- Os leitores RFID só publicam a leitura do crachá; a decisão de acesso local fica na etapa 3.
+- Os agentes de borda rodam como root com a capability `NET_ADMIN`, necessária para o WireGuard
+  e para trocar o endpoint no failover. Em produção, o túnel ficaria num serviço separado.
+- A troca fibra → 4G é feita pelo agente (endpoint da VPN), não por roteamento dinâmico.
+- O buffer não apaga eventos já enviados; em produção, haveria limpeza por retenção.
 
 ---
 

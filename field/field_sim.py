@@ -1,20 +1,4 @@
 #!/usr/bin/env python3
-"""
-Simulador da camada de CAMPO de um espaço comunitário da Rede Vila Aurora.
-
-Um container por espaço; dentro dele, uma thread por dispositivo. Cada
-dispositivo usa o PRÓPRIO certificado X.509 (mTLS) e publica só no próprio
-tópico: va/<espaco>/telemetry/<device_id>  (RT-04).
-
-Variáveis de ambiente:
-    SPACE         centro | escola | ubs | horta | abrigo
-    BROKER_HOST   broker da borda do espaço (ex.: edge-ubs-broker)
-    BROKER_PORT   porta TLS (padrão 8883)
-    CERT_ROOT     pasta com uma subpasta por dispositivo (padrão /certs)
-    DEVICES_FILE  inventário (padrão /app/devices.json)
-    BADGES_FILE   crachás sintéticos para os leitores RFID (padrão /data/crachas.csv)
-    INTERVAL      segundos entre leituras dos sensores (padrão 5)
-"""
 from __future__ import annotations
 
 import csv
@@ -97,6 +81,8 @@ class Device(threading.Thread):
         self.sensor = sensor
         self.badges = badges
         self.topic = f"va/{SPACE}/telemetry/{device_id}"
+        self.cmd_topic = f"va/{SPACE}/cmd/{device_id}"
+        self.state = "on" if sensor == "bomba" else None   # atuador: bomba começa ligada
         model = SENSOR_MODELS.get(sensor)
         self.value = model["base"] if model else None
         self.client = self._build_client()
@@ -114,6 +100,8 @@ class Device(threading.Thread):
         client.reconnect_delay_set(min_delay=1, max_delay=30)
         client.on_connect = self._on_connect
         client.on_disconnect = self._on_disconnect
+        client.on_message = self._on_command
+        client.on_connect_fail = self._on_connect_fail
         return client
 
     def _on_connect(self, _c, _u, _f, reason_code, _p):
@@ -121,14 +109,39 @@ class Device(threading.Thread):
             log.error("device=%s conexao recusada: %s", self.device_id, reason_code)
         else:
             log.info("device=%s conectado com mTLS a %s:%s", self.device_id, BROKER_HOST, BROKER_PORT)
+            self.client.subscribe(self.cmd_topic, qos=1)
+
+    def _on_command(self, _c, _u, msg):
+        try:
+            cmd = json.loads(msg.payload)
+        except ValueError:
+            log.warning("device=%s comando invalido ignorado", self.device_id)
+            return
+        action = cmd.get("action")
+        if self.sensor == "bomba" and action in ("on", "off"):
+            self.state = action
+            log.warning("device=%s BOMBA %s por %s motivo=%s", self.device_id,
+                        "LIGADA" if action == "on" else "DESLIGADA", cmd.get("by"), cmd.get("reason"))
+        elif self.sensor == "rfid":
+            log.info("device=%s porta %s (motivo=%s)", self.device_id,
+                     "LIBERADA" if action == "unlock" else "MANTIDA FECHADA", cmd.get("reason"))
+        else:
+            log.info("device=%s comando recebido: %s", self.device_id, cmd)
 
     def _on_disconnect(self, _c, _u, _f, reason_code, _p):
         log.warning("device=%s desconectado: %s", self.device_id, reason_code)
+
+    def _on_connect_fail(self, _c, _u):
+        log.error("device=%s reconexao recusada (handshake TLS falhou: certificado revogado ou invalido?)",
+                  self.device_id)
 
     # -- leituras
     def next_reading(self) -> dict:
         msg = {"msg_id": str(uuid.uuid4()), "device_id": self.device_id, "space": SPACE,
                "sensor": self.sensor, "ts": utc_iso()}
+        if self.sensor == "bomba":
+            msg.update({"state": self.state, "value": 1 if self.state == "on" else 0, "unit": "estado"})
+            return msg
         if self.sensor == "rfid":
             known = self.badges and random.random() < 0.9
             msg["badge_uid"] = (random.choice(self.badges) if known
@@ -160,6 +173,10 @@ class Device(threading.Thread):
         time.sleep(random.uniform(0, 2))  # desalinha as publicações
         while True:
             msg = self.next_reading()
+            if not self.client.is_connected():
+                log.warning("device=%s sem conexao com o broker; leitura nao enviada", self.device_id)
+                time.sleep(self.wait_time())
+                continue
             self.client.publish(self.topic, json.dumps(msg), qos=1)
             shown = msg.get("value", msg.get("badge_uid"))
             log.info("device=%s publicado %s=%s%s", self.device_id, self.sensor, shown, msg.get("unit", ""))
@@ -174,7 +191,7 @@ def main() -> None:
     badges = load_badges()
     threads = []
     for d in devices:
-        if d["sensor"] != "rfid" and d["sensor"] not in SENSOR_MODELS:
+        if d["sensor"] not in ("rfid", "bomba") and d["sensor"] not in SENSOR_MODELS:
             raise SystemExit(f"Sensor desconhecido: {d['sensor']}")
         t = Device(d["id"], d["sensor"], badges)
         t.start()

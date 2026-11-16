@@ -1,7 +1,7 @@
 # =====================================================================
 #  Rede Comunitária Vila Aurora - laboratório
-#  Etapa 2: 5 espaços (broker de borda + sensores simulados cada um),
-#           ESP32 no Wokwi via ponte com HMAC, dados sintéticos
+#  Etapas 1-3: PKI/mTLS, 5 espaços (broker + sensores + agente de borda),
+#  ESP32 no Wokwi via ponte HMAC, VPN WireGuard, ingestão e PostgreSQL
 # =====================================================================
 name: vila-aurora
 
@@ -23,6 +23,22 @@ x-field: &field
     CERT_ROOT: /certs
     INTERVAL: "5"
   restart: unless-stopped
+
+x-agent: &agent
+  build: ./edge/agent
+  cap_add: [NET_ADMIN]          # wg-quick e troca de endpoint no failover
+  sysctls:
+    net.ipv4.ip_forward: 0      # a borda não roteia pacotes de terceiros
+  restart: unless-stopped
+  depends_on: [cloud-wg]
+
+x-agent-env: &agent-env
+  TZ: UTC
+  CERT_DIR: /certs
+  CLOUD_URL: https://10.13.13.1:8443
+  WAN_LINKS: fibra=cloud-fibra:51820,4g=cloud-4g:51820
+  FAILOVER_AFTER_S: "30"
+  BADGE_PEPPER: ${BADGE_PEPPER:?defina BADGE_PEPPER no .env}
 
 services:
   # =============================================================== CENTRO
@@ -53,6 +69,18 @@ services:
     networks: [seg-iot-centro]
     depends_on: [edge-centro-broker]
 
+  edge-centro-agent:
+    <<: *agent
+    container_name: edge-centro-agent
+    environment:
+      <<: *agent-env
+      SPACE: centro
+    volumes:
+      - ./pki/out/certs/edge-centro-agent:/certs:ro
+      - ./pki/out/wg/edge-centro-agent.conf:/etc/wireguard/wg0.conf:ro
+      - outbox-centro:/var/lib/agent
+    networks: [seg-iot-centro, seg-wan-fibra, seg-wan-4g]
+
   # =============================================================== ESCOLA
   edge-escola-broker:
     <<: *broker
@@ -77,8 +105,21 @@ services:
     volumes:
       - ./pki/out/certs/escola-turbidez-01:/certs/escola-turbidez-01:ro
       - ./pki/out/certs/escola-cloro-01:/certs/escola-cloro-01:ro
+      - ./pki/out/certs/escola-bomba-01:/certs/escola-bomba-01:ro
     networks: [seg-iot-escola]
     depends_on: [edge-escola-broker]
+
+  edge-escola-agent:
+    <<: *agent
+    container_name: edge-escola-agent
+    environment:
+      <<: *agent-env
+      SPACE: escola
+    volumes:
+      - ./pki/out/certs/edge-escola-agent:/certs:ro
+      - ./pki/out/wg/edge-escola-agent.conf:/etc/wireguard/wg0.conf:ro
+      - outbox-escola:/var/lib/agent
+    networks: [seg-iot-escola, seg-wan-fibra, seg-wan-4g]
 
   # Única ponte entre o broker público (Wokwi) e o segmento IoT da escola
   escola-wokwi-bridge:
@@ -125,6 +166,19 @@ services:
     networks: [seg-iot-ubs]
     depends_on: [edge-ubs-broker]
 
+  edge-ubs-agent:
+    <<: *agent
+    container_name: edge-ubs-agent
+    environment:
+      <<: *agent-env
+      SPACE: ubs
+    volumes:
+      - ./pki/out/certs/edge-ubs-agent:/certs:ro
+      - ./pki/out/wg/edge-ubs-agent.conf:/etc/wireguard/wg0.conf:ro
+      - ./data/synthetic/crachas.csv:/data/crachas.csv:ro
+      - outbox-ubs:/var/lib/agent
+    networks: [seg-iot-ubs, seg-wan-fibra, seg-wan-4g]
+
   # ================================================================ HORTA
   edge-horta-broker:
     <<: *broker
@@ -151,6 +205,18 @@ services:
       - ./pki/out/certs/horta-cisterna-01:/certs/horta-cisterna-01:ro
     networks: [seg-iot-horta]
     depends_on: [edge-horta-broker]
+
+  edge-horta-agent:
+    <<: *agent
+    container_name: edge-horta-agent
+    environment:
+      <<: *agent-env
+      SPACE: horta
+    volumes:
+      - ./pki/out/certs/edge-horta-agent:/certs:ro
+      - ./pki/out/wg/edge-horta-agent.conf:/etc/wireguard/wg0.conf:ro
+      - outbox-horta:/var/lib/agent
+    networks: [seg-iot-horta, seg-wan-fibra, seg-wan-4g]
 
   # =============================================================== ABRIGO
   edge-abrigo-broker:
@@ -181,6 +247,71 @@ services:
     networks: [seg-iot-abrigo]
     depends_on: [edge-abrigo-broker]
 
+  edge-abrigo-agent:
+    <<: *agent
+    container_name: edge-abrigo-agent
+    environment:
+      <<: *agent-env
+      SPACE: abrigo
+    volumes:
+      - ./pki/out/certs/edge-abrigo-agent:/certs:ro
+      - ./pki/out/wg/edge-abrigo-agent.conf:/etc/wireguard/wg0.conf:ro
+      - ./data/synthetic/crachas.csv:/data/crachas.csv:ro
+      - outbox-abrigo:/var/lib/agent
+    networks: [seg-iot-abrigo, seg-wan-fibra, seg-wan-4g]
+
+  # ================================================================ NUVEM
+  # Gateway WireGuard: alcançável pelos dois links simulados (fibra e 4G)
+  cloud-wg:
+    build: ./cloud/wg
+    container_name: cloud-wg
+    cap_add: [NET_ADMIN]
+    sysctls:
+      net.ipv4.ip_forward: 0    # o gateway NÃO roteia da VPN/WAN para o banco
+    volumes:
+      - ./pki/out/wg/cloud-wg.conf:/etc/wireguard/wg0.conf:ro
+    networks:
+      seg-wan-fibra:
+        aliases: [cloud-fibra]
+      seg-wan-4g:
+        aliases: [cloud-4g]
+      seg-servicos: {}
+    restart: unless-stopped
+
+  # Ingestão: compartilha a rede do gateway; só responde pelo túnel (10.13.13.1)
+  cloud-ingest:
+    build: ./cloud/ingest
+    container_name: cloud-ingest
+    network_mode: service:cloud-wg
+    user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+    environment:
+      TZ: UTC
+      LISTEN: 10.13.13.1
+      DB_HOST: postgres
+      DB_NAME: vilaaurora
+      DB_USER: ingest_writer
+      DB_PASSWORD: ${INGEST_DB_PASSWORD:?defina INGEST_DB_PASSWORD no .env}
+    volumes:
+      - ./pki/out/certs/cloud-ingest:/certs:ro
+      - ./pki/out/crl:/crl:ro
+    depends_on: [cloud-wg, postgres]
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgres
+    environment:
+      TZ: UTC
+      POSTGRES_DB: vilaaurora
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?defina POSTGRES_PASSWORD no .env}
+      INGEST_DB_PASSWORD: ${INGEST_DB_PASSWORD:?defina INGEST_DB_PASSWORD no .env}
+      PAINEL_DB_PASSWORD: ${PAINEL_DB_PASSWORD:?defina PAINEL_DB_PASSWORD no .env}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./cloud/db/init:/docker-entrypoint-initdb.d:ro
+    networks: [seg-servicos]
+    restart: unless-stopped
+
   # ============================================ FERRAMENTAS DE TESTE (sob demanda)
   tools:
     <<: *host-user
@@ -202,5 +333,18 @@ networks:
   seg-iot-ubs:    {internal: true}
   seg-iot-horta:  {internal: true}
   seg-iot-abrigo: {internal: true}
+  # WAN simulada entre bordas e nuvem: dois links independentes.
+  seg-wan-fibra: {internal: true}
+  seg-wan-4g:    {internal: true}
+  # Serviços da nuvem (gateway/ingestão e banco). Sem acesso externo.
+  seg-servicos:  {internal: true}
   # Saída para a internet: só a ponte do Wokwi (e as ferramentas de teste).
   seg-wan: {}
+
+volumes:
+  pgdata:
+  outbox-centro:
+  outbox-escola:
+  outbox-ubs:
+  outbox-horta:
+  outbox-abrigo:

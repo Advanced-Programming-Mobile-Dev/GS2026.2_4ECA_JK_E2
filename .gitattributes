@@ -1,0 +1,4 @@
+# Scripts de shell precisam de fim de linha LF (o Windows usa CRLF e quebra o sh)
+*.sh text eol=lf
+*.conf text eol=lf
+*.acl text eol=lf

@@ -3,28 +3,65 @@
   "identities": [
     {"name": "edge-centro-broker", "kind": "server", "sans": ["edge-centro-broker", "localhost"]},
     {"name": "edge-escola-broker", "kind": "server", "sans": ["edge-escola-broker", "localhost"]},
-    {"name": "edge-ubs-broker",    "kind": "server", "sans": ["edge-ubs-broker", "localhost"]},
-    {"name": "edge-horta-broker",  "kind": "server", "sans": ["edge-horta-broker", "localhost"]},
+    {"name": "edge-ubs-broker", "kind": "server", "sans": ["edge-ubs-broker", "localhost"]},
+    {"name": "edge-horta-broker", "kind": "server", "sans": ["edge-horta-broker", "localhost"]},
     {"name": "edge-abrigo-broker", "kind": "server", "sans": ["edge-abrigo-broker", "localhost"]},
-
-    {"name": "centro-bateria-01",    "kind": "device"},
-    {"name": "centro-solar-01",      "kind": "device"},
-    {"name": "centro-ar-01",         "kind": "device"},
-    {"name": "escola-turbidez-01",   "kind": "device"},
-    {"name": "escola-cloro-01",      "kind": "device"},
-    {"name": "ubs-camara-fria-01",   "kind": "device"},
-    {"name": "ubs-acesso-01",        "kind": "device"},
-    {"name": "horta-umidade-01",     "kind": "device"},
-    {"name": "horta-cisterna-01",    "kind": "device"},
+    {"name": "centro-bateria-01", "kind": "device"},
+    {"name": "centro-solar-01", "kind": "device"},
+    {"name": "centro-ar-01", "kind": "device"},
+    {"name": "escola-turbidez-01", "kind": "device"},
+    {"name": "escola-cloro-01", "kind": "device"},
+    {"name": "escola-bomba-01", "kind": "device"},
+    {"name": "ubs-camara-fria-01", "kind": "device"},
+    {"name": "ubs-acesso-01", "kind": "device"},
+    {"name": "horta-umidade-01", "kind": "device"},
+    {"name": "horta-cisterna-01", "kind": "device"},
     {"name": "abrigo-alagamento-01", "kind": "device"},
-    {"name": "abrigo-umidade-01",    "kind": "device"},
-    {"name": "abrigo-acesso-01",     "kind": "device"},
-
+    {"name": "abrigo-umidade-01", "kind": "device"},
+    {"name": "abrigo-acesso-01", "kind": "device"},
+    {"name": "edge-centro-agent", "kind": "service"},
+    {"name": "edge-escola-agent", "kind": "service"},
+    {"name": "edge-ubs-agent", "kind": "service"},
+    {"name": "edge-horta-agent", "kind": "service"},
+    {"name": "edge-abrigo-agent", "kind": "service"},
+    {"name": "cloud-ingest", "kind": "server", "sans": ["10.13.13.1", "cloud-ingest"]},
     {"name": "escola-wokwi-bridge", "kind": "service"},
-    {"name": "lab-tester-01",       "kind": "device"},
-    {"name": "lab-auditor",         "kind": "service"}
+    {"name": "lab-tester-01", "kind": "device"},
+    {"name": "lab-auditor", "kind": "service"}
   ],
-  "hmac_devices": [
-    {"name": "escola-nivel-01", "_comment": "ESP32 no Wokwi (web): não usa mTLS, assina cada mensagem com HMAC-SHA256"}
-  ]
+  "hmac_devices": [{"name": "escola-nivel-01", "_comment": "ESP32 no Wokwi (web): não usa mTLS, assina cada mensagem com HMAC-SHA256"}],
+  "wireguard": {
+    "_comment": "VPN borda <-> nuvem. A nuvem é alcançável por dois links simulados: fibra (principal) e 4G (alternativo).",
+    "server": {
+      "name": "cloud-wg",
+      "address": "10.13.13.1",
+      "port": 51820,
+      "endpoints": [
+        "cloud-fibra",
+        "cloud-4g"
+      ]
+    },
+    "peers": [
+      {
+        "name": "edge-centro-agent",
+        "address": "10.13.13.11"
+      },
+      {
+        "name": "edge-escola-agent",
+        "address": "10.13.13.12"
+      },
+      {
+        "name": "edge-ubs-agent",
+        "address": "10.13.13.13"
+      },
+      {
+        "name": "edge-horta-agent",
+        "address": "10.13.13.14"
+      },
+      {
+        "name": "edge-abrigo-agent",
+        "address": "10.13.13.15"
+      }
+    ]
+  }
 }

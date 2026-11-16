@@ -11,3 +11,10 @@ pattern read  va/centro/cmd/%u
 # Auditor de laboratório: somente leitura (testes e evidências).
 user lab-auditor
 topic read va/#
+
+# Agente da borda: lê a telemetria do espaço, envia comandos locais
+# (ex.: liberar porta, ligar bomba) e publica alarmes locais.
+user edge-centro-agent
+topic read  va/centro/telemetry/#
+topic write va/centro/cmd/#
+topic write va/centro/alarm/#

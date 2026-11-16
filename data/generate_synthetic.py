@@ -1,5 +1,14 @@
 #!/usr/bin/env python3
+"""
+Gera os dados SINTÉTICOS da Rede Vila Aurora (RT-19): pessoas fictícias,
+papéis e crachás RFID. Nenhum dado pessoal real é usado.
 
+A seed é fixa, então o resultado é sempre o mesmo (reprodutível).
+
+Uso:
+    python data/generate_synthetic.py            # grava em data/synthetic/
+    python data/generate_synthetic.py --seed 7 --pessoas 300
+"""
 from __future__ import annotations
 
 import argparse
