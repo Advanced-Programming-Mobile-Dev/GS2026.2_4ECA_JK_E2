@@ -1,0 +1,9 @@
+{
+  "_comment": "Identidades do laboratório. Cada dispositivo/serviço tem seu próprio certificado (RT-04).",
+  "identities": [
+    {"name": "edge-ubs-broker", "kind": "server", "sans": ["edge-ubs-broker", "localhost"]},
+    {"name": "ubs-camara-fria-01", "kind": "device"},
+    {"name": "lab-tester-01", "kind": "device"},
+    {"name": "lab-auditor", "kind": "service"}
+  ]
+}

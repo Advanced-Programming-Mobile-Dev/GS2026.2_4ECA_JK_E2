@@ -1,0 +1,13 @@
+# =====================================================================
+#  ACL do broker da UBS. O "usuário" é o CN do certificado do cliente.
+#  Tópicos: va/<espaco>/telemetry/<device_id>  e  va/<espaco>/cmd/<device_id>
+# =====================================================================
+
+# Regras para qualquer identidade autenticada (dispositivos):
+# cada dispositivo só publica a PRÓPRIA telemetria e só lê os PRÓPRIOS comandos.
+pattern write va/ubs/telemetry/%u
+pattern read  va/ubs/cmd/%u
+
+# Auditor de laboratório: somente leitura de tudo (usado nos testes/evidências).
+user lab-auditor
+topic read va/#

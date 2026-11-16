@@ -1,0 +1,47 @@
+{
+  "teste": "mTLS e ACL do broker da borda",
+  "broker": "edge-ubs-broker:8883",
+  "executado_em_utc": "20261116T192735Z",
+  "resultados": [
+    {
+      "id": "T1",
+      "descricao": "Cliente sem certificado",
+      "esperado": "recusado",
+      "obtido": "recusado",
+      "passou": true,
+      "detalhe": "conexão encerrada pelo broker: Unspecified error"
+    },
+    {
+      "id": "T2",
+      "descricao": "Certificado de CA falsa (CN=ubs-camara-fria-01)",
+      "esperado": "recusado",
+      "obtido": "recusado",
+      "passou": true,
+      "detalhe": "conexão encerrada pelo broker: Unspecified error"
+    },
+    {
+      "id": "T4",
+      "descricao": "Certificado válido (lab-tester-01)",
+      "esperado": "aceito",
+      "obtido": "aceito",
+      "passou": true,
+      "detalhe": "CONNACK: Success"
+    },
+    {
+      "id": "T5",
+      "descricao": "Publicação no próprio tópico",
+      "esperado": "aceito",
+      "obtido": "aceito",
+      "passou": true,
+      "detalhe": "lab-tester-01 -> va/ubs/telemetry/lab-tester-01: entregue ao assinante"
+    },
+    {
+      "id": "T6",
+      "descricao": "Publicação se passando por ubs-camara-fria-01 (ACL)",
+      "esperado": "recusado",
+      "obtido": "recusado",
+      "passou": true,
+      "detalhe": "lab-tester-01 -> va/ubs/telemetry/ubs-camara-fria-01: descartada pelo broker (não entregue)"
+    }
+  ]
+}
