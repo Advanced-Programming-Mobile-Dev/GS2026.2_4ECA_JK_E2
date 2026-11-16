@@ -1,0 +1,13 @@
+# =====================================================================
+#  ACL do broker do espaço: abrigo. O "usuário" é o CN do certificado.
+#  Tópicos: va/abrigo/telemetry/<device_id>  e  va/abrigo/cmd/<device_id>
+# =====================================================================
+
+# Qualquer identidade autenticada (dispositivos): só publica a PRÓPRIA
+# telemetria e só lê os PRÓPRIOS comandos.
+pattern write va/abrigo/telemetry/%u
+pattern read  va/abrigo/cmd/%u
+
+# Auditor de laboratório: somente leitura (testes e evidências).
+user lab-auditor
+topic read va/#

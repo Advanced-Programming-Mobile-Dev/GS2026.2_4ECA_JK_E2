@@ -1,9 +1,30 @@
 {
-  "_comment": "Identidades do laboratório. Cada dispositivo/serviço tem seu próprio certificado (RT-04).",
+  "_comment": "Identidades do laboratório. Cada broker, dispositivo e serviço tem o PRÓPRIO certificado (RT-04).",
   "identities": [
-    {"name": "edge-ubs-broker", "kind": "server", "sans": ["edge-ubs-broker", "localhost"]},
-    {"name": "ubs-camara-fria-01", "kind": "device"},
-    {"name": "lab-tester-01", "kind": "device"},
-    {"name": "lab-auditor", "kind": "service"}
+    {"name": "edge-centro-broker", "kind": "server", "sans": ["edge-centro-broker", "localhost"]},
+    {"name": "edge-escola-broker", "kind": "server", "sans": ["edge-escola-broker", "localhost"]},
+    {"name": "edge-ubs-broker",    "kind": "server", "sans": ["edge-ubs-broker", "localhost"]},
+    {"name": "edge-horta-broker",  "kind": "server", "sans": ["edge-horta-broker", "localhost"]},
+    {"name": "edge-abrigo-broker", "kind": "server", "sans": ["edge-abrigo-broker", "localhost"]},
+
+    {"name": "centro-bateria-01",    "kind": "device"},
+    {"name": "centro-solar-01",      "kind": "device"},
+    {"name": "centro-ar-01",         "kind": "device"},
+    {"name": "escola-turbidez-01",   "kind": "device"},
+    {"name": "escola-cloro-01",      "kind": "device"},
+    {"name": "ubs-camara-fria-01",   "kind": "device"},
+    {"name": "ubs-acesso-01",        "kind": "device"},
+    {"name": "horta-umidade-01",     "kind": "device"},
+    {"name": "horta-cisterna-01",    "kind": "device"},
+    {"name": "abrigo-alagamento-01", "kind": "device"},
+    {"name": "abrigo-umidade-01",    "kind": "device"},
+    {"name": "abrigo-acesso-01",     "kind": "device"},
+
+    {"name": "escola-wokwi-bridge", "kind": "service"},
+    {"name": "lab-tester-01",       "kind": "device"},
+    {"name": "lab-auditor",         "kind": "service"}
+  ],
+  "hmac_devices": [
+    {"name": "escola-nivel-01", "_comment": "ESP32 no Wokwi (web): não usa mTLS, assina cada mensagem com HMAC-SHA256"}
   ]
 }

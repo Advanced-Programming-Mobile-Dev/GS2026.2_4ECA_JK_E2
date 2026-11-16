@@ -1,0 +1,13 @@
+# =====================================================================
+#  ACL do broker do espaço: centro. O "usuário" é o CN do certificado.
+#  Tópicos: va/centro/telemetry/<device_id>  e  va/centro/cmd/<device_id>
+# =====================================================================
+
+# Qualquer identidade autenticada (dispositivos): só publica a PRÓPRIA
+# telemetria e só lê os PRÓPRIOS comandos.
+pattern write va/centro/telemetry/%u
+pattern read  va/centro/cmd/%u
+
+# Auditor de laboratório: somente leitura (testes e evidências).
+user lab-auditor
+topic read va/#

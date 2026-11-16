@@ -1,22 +1,107 @@
 # =====================================================================
 #  Rede Comunitária Vila Aurora - laboratório
-#  Etapa 1: PKI + broker da borda (UBS) com mTLS + 1 sensor simulado
+#  Etapa 2: 5 espaços (broker de borda + sensores simulados cada um),
+#           ESP32 no Wokwi via ponte com HMAC, dados sintéticos
 # =====================================================================
 name: vila-aurora
 
 x-host-user: &host-user
-  # Containers Python rodam com o UID/GID do seu usuário (não root),
-  # para ler as chaves privadas 0600 geradas pela PKI.
+  # Containers Python rodam com o UID/GID do usuário host (não root).
   user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
 
+x-broker: &broker
+  image: eclipse-mosquitto:2.0
+  environment:
+    TZ: UTC
+  restart: unless-stopped
+
+x-field: &field
+  <<: *host-user
+  build: ./field
+  environment: &field-env
+    TZ: UTC
+    CERT_ROOT: /certs
+    INTERVAL: "5"
+  restart: unless-stopped
+
 services:
-  # --------------------------------------------------------- BORDA (UBS)
-  edge-ubs-broker:
-    image: eclipse-mosquitto:2.0
-    container_name: edge-ubs-broker
-    hostname: edge-ubs-broker
+  # =============================================================== CENTRO
+  edge-centro-broker:
+    <<: *broker
+    container_name: edge-centro-broker
+    hostname: edge-centro-broker
+    volumes:
+      - ./edge/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./edge/mosquitto/acl/centro.acl:/mosquitto/config/acl:ro
+      - ./pki/out/certs/edge-centro-broker/ca.crt:/mosquitto/certs/ca.crt:ro
+      - ./pki/out/certs/edge-centro-broker/edge-centro-broker.crt:/mosquitto/certs/broker.crt:ro
+      - ./pki/out/certs/edge-centro-broker/edge-centro-broker.key:/mosquitto/certs/broker.key:ro
+      - ./pki/out/crl:/mosquitto/crl:ro
+    networks: [seg-iot-centro]
+
+  field-centro:
+    <<: *field
+    container_name: field-centro
+    environment:
+      <<: *field-env
+      SPACE: centro
+      BROKER_HOST: edge-centro-broker
+    volumes:
+      - ./pki/out/certs/centro-bateria-01:/certs/centro-bateria-01:ro
+      - ./pki/out/certs/centro-solar-01:/certs/centro-solar-01:ro
+      - ./pki/out/certs/centro-ar-01:/certs/centro-ar-01:ro
+    networks: [seg-iot-centro]
+    depends_on: [edge-centro-broker]
+
+  # =============================================================== ESCOLA
+  edge-escola-broker:
+    <<: *broker
+    container_name: edge-escola-broker
+    hostname: edge-escola-broker
+    volumes:
+      - ./edge/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./edge/mosquitto/acl/escola.acl:/mosquitto/config/acl:ro
+      - ./pki/out/certs/edge-escola-broker/ca.crt:/mosquitto/certs/ca.crt:ro
+      - ./pki/out/certs/edge-escola-broker/edge-escola-broker.crt:/mosquitto/certs/broker.crt:ro
+      - ./pki/out/certs/edge-escola-broker/edge-escola-broker.key:/mosquitto/certs/broker.key:ro
+      - ./pki/out/crl:/mosquitto/crl:ro
+    networks: [seg-iot-escola]
+
+  field-escola:
+    <<: *field
+    container_name: field-escola
+    environment:
+      <<: *field-env
+      SPACE: escola
+      BROKER_HOST: edge-escola-broker
+    volumes:
+      - ./pki/out/certs/escola-turbidez-01:/certs/escola-turbidez-01:ro
+      - ./pki/out/certs/escola-cloro-01:/certs/escola-cloro-01:ro
+    networks: [seg-iot-escola]
+    depends_on: [edge-escola-broker]
+
+  # Única ponte entre o broker público (Wokwi) e o segmento IoT da escola
+  escola-wokwi-bridge:
+    <<: *host-user
+    build: ./bridge
+    container_name: escola-wokwi-bridge
     environment:
       TZ: UTC
+      HMAC_FILE: /hmac/escola-nivel-01.json
+      EDGE_HOST: edge-escola-broker
+      CERT_DIR: /certs
+    volumes:
+      - ./pki/out/certs/escola-wokwi-bridge:/certs:ro
+      - ./pki/out/hmac/escola-nivel-01.json:/hmac/escola-nivel-01.json:ro
+    networks: [seg-iot-escola, seg-wan]
+    depends_on: [edge-escola-broker]
+    restart: unless-stopped
+
+  # ================================================================== UBS
+  edge-ubs-broker:
+    <<: *broker
+    container_name: edge-ubs-broker
+    hostname: edge-ubs-broker
     volumes:
       - ./edge/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
       - ./edge/mosquitto/acl/ubs.acl:/mosquitto/config/acl:ro
@@ -24,31 +109,79 @@ services:
       - ./pki/out/certs/edge-ubs-broker/edge-ubs-broker.crt:/mosquitto/certs/broker.crt:ro
       - ./pki/out/certs/edge-ubs-broker/edge-ubs-broker.key:/mosquitto/certs/broker.key:ro
       - ./pki/out/crl:/mosquitto/crl:ro
-    networks:
-      - seg-iot-ubs
-    restart: unless-stopped
+    networks: [seg-iot-ubs]
 
-  # --------------------------------------------------------- CAMPO (UBS)
-  ubs-camara-fria-01:
-    <<: *host-user
-    build: ./field
-    container_name: ubs-camara-fria-01
+  field-ubs:
+    <<: *field
+    container_name: field-ubs
     environment:
-      DEVICE_ID: ubs-camara-fria-01
+      <<: *field-env
       SPACE: ubs
-      SENSOR: camara_fria
       BROKER_HOST: edge-ubs-broker
-      CERT_DIR: /certs
-      INTERVAL: "5"
     volumes:
-      - ./pki/out/certs/ubs-camara-fria-01:/certs:ro
-    networks:
-      - seg-iot-ubs
-    depends_on:
-      - edge-ubs-broker
-    restart: unless-stopped
+      - ./pki/out/certs/ubs-camara-fria-01:/certs/ubs-camara-fria-01:ro
+      - ./pki/out/certs/ubs-acesso-01:/certs/ubs-acesso-01:ro
+      - ./data/synthetic/crachas.csv:/data/crachas.csv:ro
+    networks: [seg-iot-ubs]
+    depends_on: [edge-ubs-broker]
 
-  # ------------------------------------------- FERRAMENTAS DE TESTE (sob demanda)
+  # ================================================================ HORTA
+  edge-horta-broker:
+    <<: *broker
+    container_name: edge-horta-broker
+    hostname: edge-horta-broker
+    volumes:
+      - ./edge/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./edge/mosquitto/acl/horta.acl:/mosquitto/config/acl:ro
+      - ./pki/out/certs/edge-horta-broker/ca.crt:/mosquitto/certs/ca.crt:ro
+      - ./pki/out/certs/edge-horta-broker/edge-horta-broker.crt:/mosquitto/certs/broker.crt:ro
+      - ./pki/out/certs/edge-horta-broker/edge-horta-broker.key:/mosquitto/certs/broker.key:ro
+      - ./pki/out/crl:/mosquitto/crl:ro
+    networks: [seg-iot-horta]
+
+  field-horta:
+    <<: *field
+    container_name: field-horta
+    environment:
+      <<: *field-env
+      SPACE: horta
+      BROKER_HOST: edge-horta-broker
+    volumes:
+      - ./pki/out/certs/horta-umidade-01:/certs/horta-umidade-01:ro
+      - ./pki/out/certs/horta-cisterna-01:/certs/horta-cisterna-01:ro
+    networks: [seg-iot-horta]
+    depends_on: [edge-horta-broker]
+
+  # =============================================================== ABRIGO
+  edge-abrigo-broker:
+    <<: *broker
+    container_name: edge-abrigo-broker
+    hostname: edge-abrigo-broker
+    volumes:
+      - ./edge/mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf:ro
+      - ./edge/mosquitto/acl/abrigo.acl:/mosquitto/config/acl:ro
+      - ./pki/out/certs/edge-abrigo-broker/ca.crt:/mosquitto/certs/ca.crt:ro
+      - ./pki/out/certs/edge-abrigo-broker/edge-abrigo-broker.crt:/mosquitto/certs/broker.crt:ro
+      - ./pki/out/certs/edge-abrigo-broker/edge-abrigo-broker.key:/mosquitto/certs/broker.key:ro
+      - ./pki/out/crl:/mosquitto/crl:ro
+    networks: [seg-iot-abrigo]
+
+  field-abrigo:
+    <<: *field
+    container_name: field-abrigo
+    environment:
+      <<: *field-env
+      SPACE: abrigo
+      BROKER_HOST: edge-abrigo-broker
+    volumes:
+      - ./pki/out/certs/abrigo-alagamento-01:/certs/abrigo-alagamento-01:ro
+      - ./pki/out/certs/abrigo-umidade-01:/certs/abrigo-umidade-01:ro
+      - ./pki/out/certs/abrigo-acesso-01:/certs/abrigo-acesso-01:ro
+      - ./data/synthetic/crachas.csv:/data/crachas.csv:ro
+    networks: [seg-iot-abrigo]
+    depends_on: [edge-abrigo-broker]
+
+  # ============================================ FERRAMENTAS DE TESTE (sob demanda)
   tools:
     <<: *host-user
     build: ./tools
@@ -57,11 +190,17 @@ services:
       HOME: /tmp
     volumes:
       - ./pki/out/certs:/pki/certs:ro
+      - ./pki/out/crl:/pki/crl:ro
+      - ./pki/out/hmac/escola-nivel-01.json:/hmac/escola-nivel-01.json:ro
       - ./docs/evidencias:/evidencias
-    networks:
-      - seg-iot-ubs
+    networks: [seg-iot-centro, seg-iot-escola, seg-iot-ubs, seg-iot-horta, seg-iot-abrigo, seg-wan]
 
 networks:
-  # Segmento IoT da UBS: rede interna, sem rota para a internet (RT-07).
-  seg-iot-ubs:
-    internal: true
+  # Um segmento IoT por espaço: internos, sem rota para a internet (RT-07).
+  seg-iot-centro: {internal: true}
+  seg-iot-escola: {internal: true}
+  seg-iot-ubs:    {internal: true}
+  seg-iot-horta:  {internal: true}
+  seg-iot-abrigo: {internal: true}
+  # Saída para a internet: só a ponte do Wokwi (e as ferramentas de teste).
+  seg-wan: {}

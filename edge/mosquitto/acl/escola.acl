@@ -1,0 +1,18 @@
+# =====================================================================
+#  ACL do broker do espaço: escola. O "usuário" é o CN do certificado.
+#  Tópicos: va/escola/telemetry/<device_id>  e  va/escola/cmd/<device_id>
+# =====================================================================
+
+# Qualquer identidade autenticada (dispositivos): só publica a PRÓPRIA
+# telemetria e só lê os PRÓPRIOS comandos.
+pattern write va/escola/telemetry/%u
+pattern read  va/escola/cmd/%u
+
+# Auditor de laboratório: somente leitura (testes e evidências).
+user lab-auditor
+topic read va/#
+
+# Ponte do Wokwi: só pode publicar a telemetria do ESP32 (escola-nivel-01),
+# e só depois de validar a assinatura HMAC de cada mensagem.
+user escola-wokwi-bridge
+topic write va/escola/telemetry/escola-nivel-01

@@ -1,21 +1,4 @@
 #!/usr/bin/env python3
-"""
-PKI do projeto Rede Comunitária Vila Aurora.
-
-CA própria do projeto, certificado X.509 único por dispositivo/serviço,
-revogação via CRL e rotação de credenciais (RT-04, RT-05).
-
-Uso:
-    python pki/pki.py init                      # cria a CA (uma vez)
-    python pki/pki.py issue-all                 # emite tudo que está em inventory.json
-    python pki/pki.py issue <nome> --kind device|service|server [--san dns ...]
-    python pki/pki.py revoke <nome> [--reason key_compromise]
-    python pki/pki.py rotate <nome>             # revoga o atual e emite um novo
-    python pki/pki.py list
-
-A senha da chave da CA é lida da variável VA_CA_PASS ou pedida no terminal.
-Tudo é gravado em pki/out/ (ignorado pelo git).
-"""
 from __future__ import annotations
 
 import argparse
@@ -23,6 +6,7 @@ import datetime as dt
 import getpass
 import json
 import os
+import secrets
 import shutil
 import sys
 from pathlib import Path
@@ -38,6 +22,7 @@ CA_DIR = OUT / "ca"
 CERTS_DIR = OUT / "certs"
 CRL_DIR = OUT / "crl"
 INDEX_FILE = CA_DIR / "index.json"
+HMAC_DIR = OUT / "hmac"
 INVENTORY_FILE = ROOT / "inventory.json"
 
 ORG = "Rede Comunitaria Vila Aurora"
@@ -71,8 +56,18 @@ def ca_passphrase(confirm: bool = False) -> bytes:
     return value.encode()
 
 
+def remove_docker_artifact(path: Path) -> None:
+    """Se o docker compose subir antes da PKI, o Docker cria PASTAS vazias no
+    lugar dos arquivos montados (ex.: uma pasta chamada 'ca.crt'). Remove essas
+    pastas para o arquivo verdadeiro poder ser gravado."""
+    if path.is_dir():
+        shutil.rmtree(path)
+        print(f"[corrigido] {path} era uma pasta criada pelo Docker; removida.")
+
+
 def write_file(path: Path, data: bytes, mode: int) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
+    remove_docker_artifact(path)
     path.write_bytes(data)
     os.chmod(path, mode)
 
@@ -175,9 +170,15 @@ def issue(name: str, kind: str, sans: list[str], ca_cert, ca_key, index: dict) -
     if kind not in KINDS:
         sys.exit(f"Tipo inválido: {kind}. Use {KINDS}.")
     current = index["certs"].get(name)
+    folder = CERTS_DIR / name
+    files_ok = all((folder / f).is_file() for f in (f"{name}.crt", f"{name}.key", "ca.crt"))
     if current and current["history"][-1]["status"] == "valid":
-        print(f"[pular] {name} já tem certificado válido (use 'rotate' para trocar).")
-        return
+        if files_ok:
+            print(f"[pular] {name} já tem certificado válido (use 'rotate' para trocar).")
+            return
+        # arquivos ausentes ou substituídos por pastas do Docker: reemitir
+        current["history"][-1]["status"] = "lost"
+        print(f"[reemitir] {name}: arquivos do certificado ausentes ou inválidos.")
 
     key = ec.generate_private_key(ec.SECP256R1())
     now = utcnow()
@@ -219,7 +220,6 @@ def issue(name: str, kind: str, sans: list[str], ca_cert, ca_key, index: dict) -
         )
     cert = builder.sign(ca_key, hashes.SHA256())
 
-    folder = CERTS_DIR / name
     # Laboratório: a chave do broker precisa ser legível pelo usuário 'mosquitto'
     # dentro do container (UID 1883). Em produção: dono = mosquitto, modo 0600.
     key_mode = 0o644 if kind == "server" else 0o600
@@ -233,6 +233,7 @@ def issue(name: str, kind: str, sans: list[str], ca_cert, ca_key, index: dict) -
         key_mode,
     )
     write_file(folder / f"{name}.crt", cert.public_bytes(serialization.Encoding.PEM), 0o644)
+    remove_docker_artifact(folder / "ca.crt")
     shutil.copy(CA_DIR / "ca.crt", folder / "ca.crt")
 
     entry = index["certs"].setdefault(name, {"kind": kind, "history": []})
@@ -257,10 +258,56 @@ def cmd_issue(args) -> None:
 def cmd_issue_all(_args) -> None:
     index = load_index()
     ca_cert, ca_key = load_ca()
-    inventory = json.loads(INVENTORY_FILE.read_text())
+    inventory = json.loads(INVENTORY_FILE.read_text(encoding="utf-8"))
     for item in inventory["identities"]:
         issue(item["name"], item["kind"], item.get("sans", []), ca_cert, ca_key, index)
     save_index(index)
+    for item in inventory.get("hmac_devices", []):
+        hmac_path = HMAC_DIR / f"{item['name']}.json"
+        remove_docker_artifact(hmac_path)
+        if hmac_path.is_file():
+            print(f"[pular] {item['name']} já tem chave HMAC (use 'hmac-rotate' para trocar).")
+        else:
+            make_hmac(item["name"])
+
+
+# ------------------------------------------------- dispositivos sem mTLS (Wokwi)
+# O ESP32 do Wokwi (versão web gratuita) só alcança brokers públicos. Como
+# controle compensatório, ele assina cada mensagem com HMAC-SHA256 usando uma
+# chave exclusiva dele; a ponte da borda valida a assinatura antes de repassar.
+def make_hmac(name: str) -> None:
+    data = {
+        "device_id": name,
+        "key_hex": secrets.token_hex(32),          # 256 bits
+        # prefixo aleatório: o tópico no broker público não é adivinhável
+        "topic_prefix": f"vilaaurora-lab/{secrets.token_hex(8)}",
+        "created_at": utcnow().isoformat(),
+    }
+    write_file(HMAC_DIR / f"{name}.json",
+               json.dumps(data, indent=2).encode(), 0o600)
+    print(f"[ok] hmac    {name}")
+    show_hmac(name)
+
+
+def show_hmac(name: str) -> None:
+    path = HMAC_DIR / f"{name}.json"
+    if not path.is_file():
+        sys.exit(f"{name} não tem chave HMAC (ou o Docker criou uma pasta no lugar). "
+                 "Rode: docker compose down  e depois  python pki/pki.py issue-all")
+    data = json.loads(path.read_text())
+    print("\n  Cole no main.py do Wokwi:")
+    print(f'    DEVICE_ID    = "{data["device_id"]}"')
+    print(f'    TOPIC_PREFIX = "{data["topic_prefix"]}"')
+    print(f'    HMAC_KEY_HEX = "{data["key_hex"]}"\n')
+
+
+def cmd_hmac_show(args) -> None:
+    show_hmac(args.name)
+
+
+def cmd_hmac_rotate(args) -> None:
+    make_hmac(args.name)
+    print("Atualize o main.py no Wokwi e reinicie a ponte: docker compose restart escola-wokwi-bridge")
 
 
 # --------------------------------------------------------- revogação/rotação
@@ -329,6 +376,14 @@ def main() -> None:
     p = sub.add_parser("rotate", help="rotaciona um certificado")
     p.add_argument("name")
     p.set_defaults(func=cmd_rotate)
+
+    p = sub.add_parser("hmac-show", help="mostra a chave HMAC de um ESP32 (Wokwi)")
+    p.add_argument("name")
+    p.set_defaults(func=cmd_hmac_show)
+
+    p = sub.add_parser("hmac-rotate", help="gera nova chave HMAC para um ESP32 (Wokwi)")
+    p.add_argument("name")
+    p.set_defaults(func=cmd_hmac_rotate)
 
     args = parser.parse_args()
     args.func(args)

@@ -1,13 +1,16 @@
+# Segredos: NUNCA versionar (desconto em C9)
 pki/out/
 *.key
 *.pem
 *.p12
 .env
 
+# Python
 __pycache__/
 *.pyc
 .venv/
 
+# Evidências geradas (versione só as escolhidas para o relatório)
 docs/evidencias/*.json
 docs/evidencias/*.log
 !docs/evidencias/.gitkeep

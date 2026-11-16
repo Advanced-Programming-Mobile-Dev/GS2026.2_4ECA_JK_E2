@@ -1,0 +1,25 @@
+{
+  "_comment": "Dispositivos simulados por espaço. Cada um conecta com o PRÓPRIO certificado (CN = id). O escola-nivel-01 é o ESP32 no Wokwi e chega pela ponte.",
+  "centro": [
+    {"id": "centro-bateria-01", "sensor": "bateria_soc"},
+    {"id": "centro-solar-01",   "sensor": "geracao_solar"},
+    {"id": "centro-ar-01",      "sensor": "co2"}
+  ],
+  "escola": [
+    {"id": "escola-turbidez-01", "sensor": "turbidez"},
+    {"id": "escola-cloro-01",    "sensor": "cloro_residual"}
+  ],
+  "ubs": [
+    {"id": "ubs-camara-fria-01", "sensor": "camara_fria"},
+    {"id": "ubs-acesso-01",      "sensor": "rfid"}
+  ],
+  "horta": [
+    {"id": "horta-umidade-01", "sensor": "umidade_solo"},
+    {"id": "horta-cisterna-01", "sensor": "nivel_cisterna"}
+  ],
+  "abrigo": [
+    {"id": "abrigo-alagamento-01", "sensor": "alagamento"},
+    {"id": "abrigo-umidade-01",    "sensor": "umidade_ar"},
+    {"id": "abrigo-acesso-01",     "sensor": "rfid"}
+  ]
+}
