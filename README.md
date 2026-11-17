@@ -59,7 +59,7 @@ Escola, UBS, Horta/Cozinha Solidária e Abrigo de Emergência. Tudo é **simulad
 ## Pré-requisitos
 
 - Docker Desktop (Windows) ou Docker Engine + plugin `docker compose` v2 (Linux)
-- Python 3.10+ no host (só para a PKI e os dados sintéticos)
+- Python 3.10+ no host (PKI, dados sintéticos, SIEM/SOAR, forense, IA e métricas)
 - Relógio sincronizado por NTP (base da linha do tempo forense):
   - Windows: `w32tm /query /status`
   - Linux: `timedatectl` → `System clock synchronized: yes`
@@ -71,6 +71,219 @@ Os comandos abaixo funcionam no `cmd` do Windows e no Linux (use `/` nos caminho
 **Somente Linux:** crie o `.env` com o seu UID/GID, para os containers lerem as chaves privadas:
 ```bash
 printf "HOST_UID=%s\nHOST_GID=%s\n" "$(id -u)" "$(id -g)" > .env
+```
+
+## Reprodução
+
+Uma rodada completa, do zero até as evidências finais, cobrindo todos os testes. Os passos
+manuais estão marcados nos comentários. Use **dois terminais**: o terminal A
+roda o SIEM o tempo todo; o terminal B roda o resto.
+
+Valores que mudam a cada execução aparecem entre `< >`:
+- o `<id>` das ações do SOAR sai de `soar.py list` ou `soar.py pending`;
+- a `<data>` da pasta da coleta sai da própria saída do `coletar.py`.
+
+### Linux (bash)
+
+```bash
+# ---------------------------------------------------------------- preparação
+python3 -m venv .venv && . .venv/bin/activate
+pip install cryptography scikit-learn numpy
+cp .env.example .env
+sed -i "s/^HOST_UID=.*/HOST_UID=$(id -u)/; s/^HOST_GID=.*/HOST_GID=$(id -g)/" .env
+nano .env                                   # troque todas as senhas, BADGE_PEPPER e PAINEL_SECRET_KEY
+timedatectl                                 # "System clock synchronized: yes"
+docker run --rm --cap-add NET_ADMIN alpine sh -c "ip link add wg0 type wireguard && echo WIREGUARD_OK"
+
+# ------------------------------------------- dados sintéticos e identidades (PKI)
+python3 data/generate_synthetic.py
+python3 pki/pki.py init                     # pede a senha da CA
+python3 pki/pki.py issue-all                # certificados, chaves WireGuard e chave HMAC do ESP32
+python3 pki/pki.py list
+python3 pki/pki.py wg-show
+python3 pki/pki.py hmac-show escola-nivel-01   # 3 linhas para colar no wokwi/main.py
+
+# ------------------------------------------------------------- subir o ambiente
+docker compose up -d --build --remove-orphans
+docker compose --profile tools build tools
+docker compose ps
+
+# --------------------------------------------- terminal A: SIEM (deixar aberto)
+python3 siem/siem.py
+
+# ---------------------------------------------- terminal B: mTLS, CRL e ACL
+docker compose --profile tools run --rm --user root tools python mtls_check.py
+docker compose --profile tools run --rm --user root tools python mtls_check.py --broker edge-escola-broker --space escola --victim escola-turbidez-01
+docker compose --profile tools run --rm --user root tools openssl s_client -connect edge-ubs-broker:8883 -CAfile /pki/certs/lab-auditor/ca.crt -cert /pki/certs/lab-auditor/lab-auditor.crt -key /pki/certs/lab-auditor/lab-auditor.key -brief </dev/null
+docker compose logs edge-ubs-broker | grep -E "did not return|verify failed"
+ss -tlnp | grep -E ':1883|:8883|:8443'      # só 127.0.0.1:8443 (painel)
+
+# revogação e reemissão
+python3 pki/pki.py revoke ubs-camara-fria-01 --reason key_compromise
+docker compose restart edge-ubs-broker
+docker compose --profile tools run --rm --user root tools openssl crl -in /pki/crl/crl.pem -noout -text
+docker compose --profile tools run --rm --user root tools python mtls_check.py --revoked ubs-camara-fria-01
+docker compose logs --tail 10 field-ubs
+python3 pki/pki.py issue-all
+docker compose restart field-ubs edge-ubs-broker
+python3 pki/pki.py rotate lab-tester-01
+docker compose restart edge-ubs-broker
+
+# --------------------------------------------- ESP32 (Wokwi) e ponte com HMAC
+# [manual] wokwi.com > New Project > ESP32 > MicroPython; copiar wokwi/diagram.json e wokwi/main.py,
+#          colar as 3 linhas do hmac-show e clicar em Start
+docker compose logs --tail 20 escola-wokwi-bridge                  # "ACEITA seq=..."
+docker compose --profile tools run --rm --user root tools python wokwi_attack.py forge
+docker compose --profile tools run --rm --user root tools python wokwi_attack.py tamper
+docker compose --profile tools run --rm --user root tools python wokwi_attack.py replay
+docker compose logs --tail 20 escola-wokwi-bridge                  # "REJEITADA motivo=..."
+
+# ------------------------------------------------------ VPN e segmentação
+docker compose exec cloud-wg wg show
+docker compose exec edge-ubs-agent wg show
+docker compose exec field-ubs python -c "import socket; socket.create_connection(('edge-escola-broker', 8883), 3)"      # deve falhar
+docker compose exec field-ubs python -c "import socket; socket.create_connection(('broker.hivemq.com', 8883), 3)"       # deve falhar
+docker compose exec edge-ubs-agent python -c "import socket; socket.create_connection(('cloud-fibra', 8443), 3)"       # deve falhar
+docker compose exec edge-ubs-agent python -c "import socket; socket.create_connection(('postgres', 5432), 3)"          # deve falhar
+
+# ---------------------------------------- banco: dados, privilégio mínimo e LGPD
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select space, kind, count(*) from events group by 1,2 order by 1,2;"
+docker compose exec postgres psql -U ingest_writer -d vilaaurora -c "select value from events limit 1;"       # permission denied
+docker compose exec postgres psql -U painel_reader -d vilaaurora -c "delete from events;"                     # permission denied
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select space, data->>'badge_hash', data->>'decision', data->>'reason' from events where kind='access' order by ts desc limit 5;"
+
+# ---------------------------------------------------- regras locais da borda
+docker compose --profile tools run --rm --user root tools python inject_reading.py ubs-camara-fria-01 camara_fria 12 C
+docker compose logs --tail 20 edge-ubs-agent edge-escola-agent field-escola field-ubs
+# [manual] no Wokwi: potenciômetro >= 95 % (bomba desliga) e depois < 20 % (alarme e bomba liga)
+
+# ----------------------------------------------- painel (MFA, RBAC, SQL Injection)
+docker compose exec painel python manage.py create-user ana.op operador
+docker compose exec painel python manage.py create-user beto.tec tecnico
+docker compose exec painel python manage.py create-user carla.coord coordenacao
+docker compose exec painel python manage.py create-user davi.aud auditor
+# [manual] abrir https://localhost:8443 (aceitar o certificado ou importar pki/out/ca/ca.crt no navegador)
+#          ana.op: cadastrar MFA; abrir /acessos (403); no Histórico buscar  x' OR '1'='1  (rejeitado)
+#          beto.tec: errar a senha 5 vezes (bloqueio); carla.coord: páginas Acessos e Auditoria
+docker compose logs painel | grep -E "result=(negado|falha|bloqueado|entrada_invalida)"
+
+# ------------------------------------- reprodução do INC-VA-0712 (SIEM no terminal A)
+docker run --rm --cap-add NET_ADMIN --network vila-aurora_seg-wan-fibra -v "$(pwd)/pki/out/wg/edge-horta-agent.conf:/etc/wireguard/wg0.conf:ro" --entrypoint bash vila-aurora-edge-horta-agent -c "wg-quick up wg0 && sleep 90"
+docker compose exec edge-escola-agent python send_command.py escola-bomba-01 off --by painel:ana.op --reason agendamento_alterado
+python3 siem/soar.py pending
+python3 siem/soar.py reject <id>
+python3 metricas/caos.py --borda ubs --minutos 5 --injetar-alarme
+python3 siem/soar.py list
+python3 siem/soar.py restore <id>            # encerrar_sessao_vpn e bloquear_usuario_painel
+
+# ---------------------------------------------- forense, IA e métricas
+python3 forense/coletar.py --incidente INC-VA-LAB-01 --desde 30 --responsavel "Julia Santos"
+python3 forense/coletar.py --verificar docs/forense/INC-VA-LAB-01_<data>
+python3 ia/detector.py
+python3 metricas/relatorio.py --desde 60
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select count(*) - count(distinct msg_id) as duplicados from events;"
+```
+
+### Windows (cmd)
+
+```bat
+REM ---------------------------------------------------------------- preparação
+python -m venv .venv && .venv\Scripts\activate
+pip install cryptography scikit-learn numpy
+copy .env.example .env
+notepad .env
+REM   troque todas as senhas, BADGE_PEPPER e PAINEL_SECRET_KEY (HOST_UID/GID podem ficar 1000)
+w32tm /query /status
+docker run --rm --cap-add NET_ADMIN alpine sh -c "ip link add wg0 type wireguard && echo WIREGUARD_OK"
+
+REM ------------------------------------------- dados sintéticos e identidades (PKI)
+python data/generate_synthetic.py
+python pki/pki.py init
+python pki/pki.py issue-all
+python pki/pki.py list
+python pki/pki.py wg-show
+python pki/pki.py hmac-show escola-nivel-01
+
+REM ------------------------------------------------------------- subir o ambiente
+docker compose up -d --build --remove-orphans
+docker compose --profile tools build tools
+docker compose ps
+
+REM --------------------------------------------- terminal A: SIEM (deixar aberto)
+python siem/siem.py
+
+REM ---------------------------------------------- terminal B: mTLS, CRL e ACL
+docker compose --profile tools run --rm --user root tools python mtls_check.py
+docker compose --profile tools run --rm --user root tools python mtls_check.py --broker edge-escola-broker --space escola --victim escola-turbidez-01
+docker compose --profile tools run --rm --user root tools sh -c "openssl s_client -connect edge-ubs-broker:8883 -CAfile /pki/certs/lab-auditor/ca.crt -cert /pki/certs/lab-auditor/lab-auditor.crt -key /pki/certs/lab-auditor/lab-auditor.key -brief </dev/null"
+docker compose logs edge-ubs-broker | findstr /C:"did not return" /C:"verify failed"
+netstat -ano | findstr ":1883 :8883 :8443"
+
+REM revogação e reemissão
+python pki/pki.py revoke ubs-camara-fria-01 --reason key_compromise
+docker compose restart edge-ubs-broker
+docker compose --profile tools run --rm --user root tools openssl crl -in /pki/crl/crl.pem -noout -text
+docker compose --profile tools run --rm --user root tools python mtls_check.py --revoked ubs-camara-fria-01
+docker compose logs --tail 10 field-ubs
+python pki/pki.py issue-all
+docker compose restart field-ubs edge-ubs-broker
+python pki/pki.py rotate lab-tester-01
+docker compose restart edge-ubs-broker
+
+REM --------------------------------------------- ESP32 (Wokwi) e ponte com HMAC
+REM [manual] wokwi.com > New Project > ESP32 > MicroPython; copiar wokwi\diagram.json e wokwi\main.py,
+REM          colar as 3 linhas do hmac-show e clicar em Start
+docker compose logs --tail 20 escola-wokwi-bridge
+docker compose --profile tools run --rm --user root tools python wokwi_attack.py forge
+docker compose --profile tools run --rm --user root tools python wokwi_attack.py tamper
+docker compose --profile tools run --rm --user root tools python wokwi_attack.py replay
+docker compose logs --tail 20 escola-wokwi-bridge
+
+REM ------------------------------------------------------ VPN e segmentação
+docker compose exec cloud-wg wg show
+docker compose exec edge-ubs-agent wg show
+docker compose exec field-ubs python -c "import socket; socket.create_connection(('edge-escola-broker', 8883), 3)"
+docker compose exec field-ubs python -c "import socket; socket.create_connection(('broker.hivemq.com', 8883), 3)"
+docker compose exec edge-ubs-agent python -c "import socket; socket.create_connection(('cloud-fibra', 8443), 3)"
+docker compose exec edge-ubs-agent python -c "import socket; socket.create_connection(('postgres', 5432), 3)"
+
+REM ---------------------------------------- banco: dados, privilégio mínimo e LGPD
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select space, kind, count(*) from events group by 1,2 order by 1,2;"
+docker compose exec postgres psql -U ingest_writer -d vilaaurora -c "select value from events limit 1;"
+docker compose exec postgres psql -U painel_reader -d vilaaurora -c "delete from events;"
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select space, data->>'badge_hash', data->>'decision', data->>'reason' from events where kind='access' order by ts desc limit 5;"
+
+REM ---------------------------------------------------- regras locais da borda
+docker compose --profile tools run --rm --user root tools python inject_reading.py ubs-camara-fria-01 camara_fria 12 C
+docker compose logs --tail 20 edge-ubs-agent edge-escola-agent field-escola field-ubs
+REM [manual] no Wokwi: potenciômetro >= 95 % (bomba desliga) e depois < 20 % (alarme e bomba liga)
+
+REM ----------------------------------------------- painel (MFA, RBAC, SQL Injection)
+docker compose exec painel python manage.py create-user ana.op operador
+docker compose exec painel python manage.py create-user beto.tec tecnico
+docker compose exec painel python manage.py create-user carla.coord coordenacao
+docker compose exec painel python manage.py create-user davi.aud auditor
+certutil -user -addstore Root pki\out\ca\ca.crt
+REM [manual] abrir https://localhost:8443
+REM          ana.op: cadastrar MFA; abrir /acessos (403); no Histórico buscar  x' OR '1'='1  (rejeitado)
+REM          beto.tec: errar a senha 5 vezes (bloqueio); carla.coord: páginas Acessos e Auditoria
+docker compose logs painel | findstr "result=negado result=falha result=bloqueado result=entrada_invalida"
+
+REM ------------------------------------- reprodução do INC-VA-0712 (SIEM no terminal A)
+docker run --rm --cap-add NET_ADMIN --network vila-aurora_seg-wan-fibra -v "%cd%\pki\out\wg\edge-horta-agent.conf:/etc/wireguard/wg0.conf:ro" --entrypoint bash vila-aurora-edge-horta-agent -c "wg-quick up wg0 && sleep 90"
+docker compose exec edge-escola-agent python send_command.py escola-bomba-01 off --by painel:ana.op --reason agendamento_alterado
+python siem/soar.py pending
+python siem/soar.py reject <id>
+python metricas/caos.py --borda ubs --minutos 5 --injetar-alarme
+python siem/soar.py list
+python siem/soar.py restore <id>
+
+REM ---------------------------------------------- forense, IA e métricas
+python forense/coletar.py --incidente INC-VA-LAB-01 --desde 30 --responsavel "Julia Santos"
+python forense/coletar.py --verificar docs\forense\INC-VA-LAB-01_<data>
+python ia/detector.py
+python metricas/relatorio.py --desde 60
+docker compose exec postgres psql -U postgres -d vilaaurora -c "select count(*) - count(distinct msg_id) as duplicados from events;"
 ```
 
 ## Limitações conhecidas
