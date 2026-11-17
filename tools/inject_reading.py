@@ -1,4 +1,17 @@
 #!/usr/bin/env python3
+"""
+Injeta UMA leitura no broker de um espaço usando o certificado de um
+dispositivo (ferramenta de laboratório, para demonstrar as regras locais).
+
+Exemplos (dentro do container 'tools'):
+    # câmara fria a 12 °C -> alarme local na UBS
+    python inject_reading.py ubs-camara-fria-01 camara_fria 12 C
+    # alagamento de 25 cm no abrigo
+    python inject_reading.py abrigo-alagamento-01 alagamento 25 cm
+
+O espaço e o broker são deduzidos do nome do dispositivo (<espaco>-...).
+A ACL continua valendo: o certificado só publica no tópico do próprio dispositivo.
+"""
 from __future__ import annotations
 
 import argparse

@@ -1,3 +1,17 @@
+# =====================================================================
+#  ESP32 (Wokwi, MicroPython) - sensor de nível do reservatório da escola
+#  Rede Comunitária Vila Aurora
+#
+#  - Potenciômetro (GPIO34) = nível do reservatório (0-100 %)
+#  - LED vermelho (GPIO2)   = alarme local de nível baixo (< 20 %)
+#  - Publica no broker público via TLS. Cada mensagem é assinada com
+#    HMAC-SHA256 (chave exclusiva deste dispositivo) e leva um contador
+#    de sequência, para a ponte da borda rejeitar forjas e replays.
+#
+#  Preencha DEVICE_ID, TOPIC_PREFIX e HMAC_KEY_HEX com a saída de:
+#      python pki/pki.py hmac-show escola-nivel-01
+#  NÃO salve/publique o projeto no Wokwi com a chave preenchida.
+# =====================================================================
 import time
 import json
 import network

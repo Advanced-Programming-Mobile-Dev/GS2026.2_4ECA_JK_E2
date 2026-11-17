@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Dispositivos{% endblock %}
+{% block content %}
+<h1>Estado dos dispositivos</h1>
+<table>
+  <caption>Último dado recebido de cada dispositivo (sem dados há mais de 2 min = sem comunicação)</caption>
+  <thead><tr><th scope="col">Espaço</th><th scope="col">Dispositivo</th><th scope="col">Último dado (UTC)</th><th scope="col">Situação</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+    <tr {% if r.seconds_ago > 120 %}class="alarme"{% endif %}><td>{{ r.space }}</td><td>{{ r.device_id }}</td><td>{{ r.last_ts.strftime('%d/%m %H:%M:%S') }}</td>
+      <td>{% if r.seconds_ago > 120 %}<span aria-hidden="true">⚠</span> SEM COMUNICAÇÃO há {{ (r.seconds_ago // 60) }} min{% else %}<span aria-hidden="true">✓</span> Comunicando{% endif %}</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

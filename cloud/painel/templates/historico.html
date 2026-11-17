@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Histórico{% endblock %}
+{% block content %}
+<h1>Histórico de eventos</h1>
+{% if errors %}
+<div class="erro" role="alert"><p>Corrija os campos:</p><ul>{% for e in errors %}<li>{{ e }}</li>{% endfor %}</ul></div>
+{% endif %}
+<form method="get" class="filtros">
+  <div><label for="space">Espaço</label>
+    <select id="space" name="space">{% for s in spaces %}<option value="{{ s }}" {% if s == f.space %}selected{% endif %}>{{ s }}</option>{% endfor %}</select></div>
+  <div><label for="kind">Tipo</label>
+    <select id="kind" name="kind">{% for k in kinds %}<option value="{{ k }}" {% if k == f.kind %}selected{% endif %}>{{ k }}</option>{% endfor %}</select></div>
+  <div><label for="device">Dispositivo (opcional)</label>
+    <input id="device" name="device" value="{{ f.device }}" maxlength="64" aria-describedby="device-ajuda">
+    <small id="device-ajuda">Ex.: escola-turbidez-01</small></div>
+  <div><label for="hours">Últimas horas</label>
+    <input id="hours" name="hours" type="number" min="1" max="168" value="{{ f.hours }}"></div>
+  <button type="submit">Buscar</button>
+</form>
+<table>
+  <caption>{{ rows|length }} eventos encontrados (máximo 200)</caption>
+  <thead><tr><th scope="col">Horário (UTC)</th><th scope="col">Dispositivo</th><th scope="col">Sensor</th><th scope="col">Valor</th><th scope="col">Detalhe</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+    <tr><td>{{ r.ts.strftime('%d/%m %H:%M:%S') }}</td><td>{{ r.device_id }}</td><td>{{ r.sensor or '' }}</td>
+        <td>{% if r.value is not none %}{{ '%.2f'|format(r.value) }} {{ r.unit or '' }}{% endif %}</td>
+        <td>{{ r.state or r.decision or '' }}</td></tr>
+  {% else %}
+    <tr><td colspan="5">Nenhum evento para os filtros escolhidos.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -1,4 +1,21 @@
 #!/usr/bin/env python3
+"""
+Ataques ao trecho Wokwi -> broker público, para mostrar que a ponte rejeita.
+
+Pior caso assumido: o atacante descobriu o tópico (o broker é público), mas
+NÃO tem a chave HMAC do ESP32. Este script lê apenas o 'topic_prefix'.
+
+Modos:
+  forge   publica uma leitura falsa (nível 0 %) com assinatura inventada
+  tamper  captura uma mensagem legítima, altera o valor e reenvia
+  replay  captura uma mensagem legítima e a reenvia sem alterações
+
+Uso (dentro do container 'tools'):
+    python wokwi_attack.py forge
+    python wokwi_attack.py tamper
+    python wokwi_attack.py replay
+Depois confira: docker compose logs --tail 20 escola-wokwi-bridge
+"""
 from __future__ import annotations
 
 import argparse

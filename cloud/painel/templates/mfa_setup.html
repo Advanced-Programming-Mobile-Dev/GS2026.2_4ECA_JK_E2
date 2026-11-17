@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Configurar MFA{% endblock %}
+{% block content %}
+<h1>Configurar a verificação em duas etapas</h1>
+{% if error %}<p class="erro" role="alert">{{ error }}</p>{% endif %}
+<ol>
+  <li>Abra um aplicativo autenticador (Google Authenticator, Microsoft Authenticator, Aegis…).</li>
+  <li>Leia o QR code abaixo ou digite a chave manualmente.</li>
+  <li>Informe o código de 6 dígitos gerado pelo aplicativo.</li>
+</ol>
+<img src="{{ qr }}" alt="QR code para cadastrar o painel no aplicativo autenticador" class="qr">
+<p>Chave manual: <code>{{ secret }}</code></p>
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <label for="code">Código de 6 dígitos</label>
+  <input id="code" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6" autocomplete="one-time-code" required autofocus>
+  <button type="submit">Ativar e entrar</button>
+</form>
+{% endblock %}

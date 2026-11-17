@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Painel{% endblock %} · Rede Vila Aurora</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+  <header>
+    <p class="brand">Rede Comunitária Vila Aurora</p>
+    {% if user %}
+    <nav aria-label="Menu principal">
+      <ul>
+        {% if can('ver_painel') %}<li><a href="{{ url_for('dashboard') }}">Painel</a></li>{% endif %}
+        {% if can('historico') %}<li><a href="{{ url_for('historico') }}">Histórico</a></li>{% endif %}
+        {% if can('dispositivos') %}<li><a href="{{ url_for('dispositivos') }}">Dispositivos</a></li>{% endif %}
+        {% if can('acessos') %}<li><a href="{{ url_for('acessos') }}">Acessos</a></li>{% endif %}
+        {% if can('auditoria') %}<li><a href="{{ url_for('auditoria') }}">Auditoria</a></li>{% endif %}
+      </ul>
+    </nav>
+    <form method="post" action="{{ url_for('logout') }}" class="logout">
+      <span>{{ user }} ({{ role }})</span>
+      <input type="hidden" name="csrf" value="{{ csrf }}">
+      <button type="submit">Sair</button>
+    </form>
+    {% endif %}
+  </header>
+  <main id="conteudo" tabindex="-1">
+    {% block content %}{% endblock %}
+  </main>
+  <footer><p>Dados sintéticos · horários em UTC</p></footer>
+</body>
+</html>

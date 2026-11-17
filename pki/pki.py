@@ -1,4 +1,24 @@
 #!/usr/bin/env python3
+"""
+PKI do projeto Rede Comunitária Vila Aurora.
+
+CA própria do projeto, certificado X.509 único por dispositivo/serviço,
+revogação via CRL e rotação de credenciais (RT-04, RT-05).
+
+Uso:
+    python pki/pki.py init                      # cria a CA (uma vez)
+    python pki/pki.py issue-all                 # emite tudo que está em inventory.json
+    python pki/pki.py issue <nome> --kind device|service|server [--san dns ...]
+    python pki/pki.py revoke <nome> [--reason key_compromise]
+    python pki/pki.py rotate <nome>             # revoga o atual e emite um novo
+    python pki/pki.py list
+    python pki/pki.py hmac-show <nome>          # mostra chave HMAC e tópico do ESP32 (Wokwi)
+    python pki/pki.py hmac-rotate <nome>        # gera nova chave HMAC para o ESP32
+    python pki/pki.py wg-show                   # mostra o plano de endereços da VPN
+
+A senha da chave da CA é lida da variável VA_CA_PASS ou pedida no terminal.
+Tudo é gravado em pki/out/ (ignorado pelo git).
+"""
 from __future__ import annotations
 
 import argparse

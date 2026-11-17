@@ -6,7 +6,7 @@ RUN apt-get update \
 WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-COPY agent.py entrypoint.sh ./
+COPY agent.py send_command.py entrypoint.sh ./
 # Remove CR (caso o arquivo tenha passado por um editor do Windows)
 RUN sed -i 's/\r$//' entrypoint.sh && chmod +x entrypoint.sh
 # Roda como root com a capability NET_ADMIN (necessária para o wg-quick e

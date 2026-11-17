@@ -7,7 +7,7 @@ echo "$(date -u +%FT%TZ) WireGuard ativo em $(ip -4 -o addr show wg0 | awk '{pri
 while true; do
   # registro periódico dos pares (handshake e endpoint atual) para auditoria/SIEM
   wg show wg0 dump | tail -n +2 | while read -r pub _psk endpoint allowed handshake rx tx _ka; do
-    echo "$(date -u +%FT%TZ) peer=${pub:0:8} allowed=$allowed endpoint=$endpoint ultimo_handshake=$handshake rx=$rx tx=$tx"
+    echo "$(date -u +%FT%TZ) peer=$pub allowed=$allowed endpoint=$endpoint ultimo_handshake=$handshake rx=$rx tx=$tx"
   done
-  sleep 60
+  sleep 15
 done

@@ -14,3 +14,9 @@ __pycache__/
 docs/evidencias/*.json
 docs/evidencias/*.log
 !docs/evidencias/.gitkeep
+
+# Usuários e auditoria do painel (hashes de senha e segredos MFA)
+data/painel/
+
+# SIEM: logs centralizados, alertas e ações (gerados)
+data/siem/

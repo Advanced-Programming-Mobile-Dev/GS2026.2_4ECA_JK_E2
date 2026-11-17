@@ -25,6 +25,7 @@
     {"name": "edge-horta-agent", "kind": "service"},
     {"name": "edge-abrigo-agent", "kind": "service"},
     {"name": "cloud-ingest", "kind": "server", "sans": ["10.13.13.1", "cloud-ingest"]},
+    {"name": "painel", "kind": "server", "sans": ["localhost", "127.0.0.1", "painel"]},
     {"name": "escola-wokwi-bridge", "kind": "service"},
     {"name": "lab-tester-01", "kind": "device"},
     {"name": "lab-auditor", "kind": "service"}

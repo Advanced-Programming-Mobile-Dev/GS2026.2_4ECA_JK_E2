@@ -1,0 +1,49 @@
+{
+  "incidente": "INC-VA-LAB-01",
+  "janela_utc": {
+    "inicio": "2026-11-17T00:14:19.125588+00:00",
+    "fim": "2026-11-17T00:44:19.125588+00:00"
+  },
+  "coletado_por": "Julia Santos",
+  "coletado_em_utc": "2026-11-17T00:44:19.125588+00:00",
+  "estacao": "jubs (Windows 11)",
+  "metodo": "exportacao somente-leitura do banco do SIEM (SQLite, mode=ro) e COPY do PostgreSQL; SHA-256 calculado imediatamente apos a escrita de cada arquivo",
+  "arquivos": [
+    {
+      "arquivo": "acoes_soar.csv",
+      "bytes": 1330,
+      "sha256": "7aef45df5a5247a1f02e2cb68a30f82ac9438aa6a6a3eec050bdc7a181525a8a",
+      "registros": 6
+    },
+    {
+      "arquivo": "alertas.csv",
+      "bytes": 2261,
+      "sha256": "77b8fad83455fc02b5e0e2493ad55927f6329d244d53eb9f5b5d22647b93ce14",
+      "registros": 7
+    },
+    {
+      "arquivo": "crl.pem",
+      "bytes": 422,
+      "sha256": "0ba6dc3c97f24a28cc884583aef7b87b7fac57e9b4fdf7ee06c768a97ef3553e",
+      "registros": null
+    },
+    {
+      "arquivo": "eventos_nuvem.csv",
+      "bytes": 1353031,
+      "sha256": "eb1a3d6403fb072be0b442b80c0c519b191daf2e1e9b23bbaccdfd8d6e372de4",
+      "registros": 3309
+    },
+    {
+      "arquivo": "linha_do_tempo.csv",
+      "bytes": 125261,
+      "sha256": "f80f82fc758114c87fc932e5ce096ca3eb9e5e6025281cfcd0448e3f32841878",
+      "registros": 752
+    },
+    {
+      "arquivo": "logs.csv",
+      "bytes": 358438,
+      "sha256": "6e03fc0fa58189fa12aaa57d092911d1856efe5065f10bb1f52e158686c4f271",
+      "registros": 2379
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Entrar{% endblock %}
+{% block content %}
+<h1>Entrar no painel</h1>
+{% if error %}<p class="erro" role="alert">{{ error }}</p>{% endif %}
+<form method="post" class="card">
+  <input type="hidden" name="csrf" value="{{ csrf }}">
+  <label for="username">Usuário</label>
+  <input id="username" name="username" autocomplete="username" required maxlength="32" autofocus>
+  <label for="password">Senha</label>
+  <input id="password" name="password" type="password" autocomplete="current-password" required>
+  <button type="submit">Continuar</button>
+</form>
+<p class="ajuda">Depois da senha, será pedido o código do aplicativo autenticador (MFA).</p>
+{% endblock %}

@@ -1,4 +1,22 @@
 #!/usr/bin/env python3
+"""
+Simulador da camada de CAMPO de um espaço comunitário da Rede Vila Aurora.
+
+Um container por espaço; dentro dele, uma thread por dispositivo. Cada
+dispositivo usa o PRÓPRIO certificado X.509 (mTLS), publica só no próprio
+tópico va/<espaco>/telemetry/<device_id> e só recebe comandos em
+va/<espaco>/cmd/<device_id> (RT-04). Atuadores (bomba) obedecem a esses
+comandos; leitores RFID registram a decisão de acesso tomada pela borda.
+
+Variáveis de ambiente:
+    SPACE         centro | escola | ubs | horta | abrigo
+    BROKER_HOST   broker da borda do espaço (ex.: edge-ubs-broker)
+    BROKER_PORT   porta TLS (padrão 8883)
+    CERT_ROOT     pasta com uma subpasta por dispositivo (padrão /certs)
+    DEVICES_FILE  inventário (padrão /app/devices.json)
+    BADGES_FILE   crachás sintéticos para os leitores RFID (padrão /data/crachas.csv)
+    INTERVAL      segundos entre leituras dos sensores (padrão 5)
+"""
 from __future__ import annotations
 
 import csv
@@ -83,6 +101,7 @@ class Device(threading.Thread):
         self.topic = f"va/{SPACE}/telemetry/{device_id}"
         self.cmd_topic = f"va/{SPACE}/cmd/{device_id}"
         self.state = "on" if sensor == "bomba" else None   # atuador: bomba começa ligada
+        self.safe_until = 0.0     # modo seguro: só aceita comandos do agente da borda
         model = SENSOR_MODELS.get(sensor)
         self.value = model["base"] if model else None
         self.client = self._build_client()
@@ -117,7 +136,19 @@ class Device(threading.Thread):
         except ValueError:
             log.warning("device=%s comando invalido ignorado", self.device_id)
             return
-        action = cmd.get("action")
+        action, by = cmd.get("action"), cmd.get("by")
+        # registro de TODO comando com o emissor declarado (fonte da regra (d) do SIEM)
+        log.info("COMANDO RECEBIDO device=%s action=%s by=%s reason=%s",
+                 self.device_id, action, by, cmd.get("reason"))
+        if action == "safe_mode":
+            minutes = int(cmd.get("minutes", 30))
+            self.safe_until = time.time() + minutes * 60
+            log.warning("device=%s MODO SEGURO por %d min: só aceita comandos de edge-%s-agent",
+                        self.device_id, minutes, SPACE)
+            return
+        if time.time() < self.safe_until and by != f"edge-{SPACE}-agent":
+            log.warning("device=%s COMANDO IGNORADO (modo seguro) action=%s by=%s", self.device_id, action, by)
+            return
         if self.sensor == "bomba" and action in ("on", "off"):
             self.state = action
             log.warning("device=%s BOMBA %s por %s motivo=%s", self.device_id,

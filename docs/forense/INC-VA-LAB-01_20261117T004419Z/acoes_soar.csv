@@ -1,0 +1,12 @@
+id,alerta,ts_utc,acao,alvo,risco,status,decidido_por,decidido_em,saida
+1,1,2026-11-17T00:22:12+00:00,isolar_container,vila-aurora-tools-run-811814c23a7b|vila-aurora_seg-iot-ubs,baixo,executada,automatico,2026-11-17T00:22:12+00:00,vila-aurora-tools-run-811814c23a7b desconectado de vila-aurora_seg-iot-ubs
+2,2,2026-11-17T00:22:34+00:00,modo_seguro_atuador,escola:escola-bomba-01,baixo,executada,automatico,2026-11-17T00:22:34+00:00,comando enviado: escola-bomba-01 action=safe_mode by=soar
+3,2,2026-11-17T00:22:34+00:00,revogar_certificado,edge-escola-agent,alto,executada,julia,2026-11-17T00:23:26+00:00,"exit=0; reinicio: -broker Started 
+ Container edge-centro-broker Started 
+ Container edge-horta-broker Started 
+ Container edge-abrigo-broker Started 
+ Container edge-ubs-broker Started 
+ Container cloud-ingest Started"
+4,4,2026-11-17T00:23:30+00:00,encerrar_sessao_vpn,+nmJTWSXp35QDnZPOVsHRRxv/oB9EBUNSppiO1mwwic=,baixo,desfeita,automatico,2026-11-17T00:23:30+00:00,par removido do WireGuard da nuvem
+5,6,2026-11-17T00:42:09.464+00:00,modo_seguro_atuador,escola:escola-bomba-01,baixo,executada,automatico,2026-11-17T00:42:09.464+00:00,comando enviado: escola-bomba-01 action=safe_mode by=soar
+6,6,2026-11-17T00:42:09.466+00:00,revogar_certificado,edge-escola-agent,alto,rejeitada,julia,2026-11-17T00:42:25.807+00:00,

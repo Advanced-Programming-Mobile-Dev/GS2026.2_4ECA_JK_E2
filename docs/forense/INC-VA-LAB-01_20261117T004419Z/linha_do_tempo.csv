@@ -1,0 +1,753 @@
+ts_utc,tipo,origem,descricao
+2026-11-17T00:20:56.040369660Z,log,field-abrigo,2026-11-17T00:20:56Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:20:56.721556207Z,log,cloud-ingest,2026-11-17T00:20:56Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:20:57.013460951Z,log,cloud-ingest,2026-11-17T00:20:57Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:20:57.743444182Z,log,cloud-ingest,2026-11-17T00:20:57Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:20:58.662713206Z,log,cloud-ingest,2026-11-17T00:20:58Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:20:59.199389168Z,log,cloud-ingest,2026-11-17T00:20:59Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:20:59.736958328Z,log,cloud-ingest,2026-11-17T00:20:59Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:00.070677984Z,log,field-escola,2026-11-17T00:21:00Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:00.283778336Z,log,cloud-ingest,2026-11-17T00:21:00Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:00.575639426Z,log,cloud-ingest,2026-11-17T00:21:00Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:01.303496098Z,log,cloud-ingest,2026-11-17T00:21:01Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:02.041496095Z,log,cloud-ingest,2026-11-17T00:21:02Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:04.868698731Z,log,cloud-ingest,2026-11-17T00:21:04Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:05.071782724Z,log,field-escola,2026-11-17T00:21:05Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:05.410914215Z,log,cloud-ingest,2026-11-17T00:21:05Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:05.592152020Z,log,cloud-ingest,2026-11-17T00:21:05Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:06.088163938Z,log,field-abrigo,2026-11-17T00:21:06Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:21:06.314739503Z,log,cloud-ingest,2026-11-17T00:21:06Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:06.859666454Z,log,cloud-ingest,2026-11-17T00:21:06Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:07.165164936Z,log,cloud-ingest,2026-11-17T00:21:07Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:07.406408210Z,log,edge-ubs-agent,2026-11-17T00:21:07Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=905cbd0d papel=- motivo=cracha_desconhecido
+2026-11-17T00:21:07.411059903Z,log,field-ubs,2026-11-17T00:21:07Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=cracha_desconhecido
+2026-11-17T00:21:08.978334233Z,log,cloud-ingest,2026-11-17T00:21:08Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:09.879445862Z,log,cloud-ingest,2026-11-17T00:21:09Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:10.072369740Z,log,field-escola,2026-11-17T00:21:10Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:10.442598769Z,log,cloud-ingest,2026-11-17T00:21:10Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:10.728935228Z,log,cloud-ingest,2026-11-17T00:21:10Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:12.174233998Z,log,cloud-ingest,2026-11-17T00:21:12Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:12.535272626Z,log,cloud-ingest,2026-11-17T00:21:12Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:15.073778566Z,log,field-escola,2026-11-17T00:21:15Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:15.738859014Z,log,cloud-ingest,2026-11-17T00:21:15Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:16.094787649Z,log,cloud-ingest,2026-11-17T00:21:16Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:16.464984212Z,log,cloud-ingest,2026-11-17T00:21:16Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:17.012417549Z,log,cloud-ingest,2026-11-17T00:21:17Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:17.313592921Z,log,cloud-ingest,2026-11-17T00:21:17Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:19.659250834Z,log,cloud-ingest,2026-11-17T00:21:19Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:20.024716007Z,log,cloud-ingest,2026-11-17T00:21:20Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:20.074427398Z,log,field-escola,2026-11-17T00:21:20Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:20.201675646Z,log,cloud-ingest,2026-11-17T00:21:20Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:20.570447957Z,log,cloud-ingest,2026-11-17T00:21:20Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:20.871894488Z,log,cloud-ingest,2026-11-17T00:21:20Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:22.396930048Z,log,cloud-ingest,2026-11-17T00:21:22Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:25.075584414Z,log,field-escola,2026-11-17T00:21:25Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:25.957517502Z,log,cloud-ingest,2026-11-17T00:21:25Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:26.615001541Z,log,cloud-ingest,2026-11-17T00:21:26Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:26.784680316Z,log,cloud-ingest,2026-11-17T00:21:26Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:27.158609772Z,log,cloud-ingest,2026-11-17T00:21:27Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:27.451998627Z,log,cloud-ingest,2026-11-17T00:21:27Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:27.952317790Z,log,field-abrigo,2026-11-17T00:21:27Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:21:30.076193849Z,log,field-escola,2026-11-17T00:21:30Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:30.189898455Z,log,cloud-ingest,2026-11-17T00:21:30Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:30.352129047Z,log,cloud-ingest,2026-11-17T00:21:30Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:30.718509114Z,log,cloud-ingest,2026-11-17T00:21:30Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:31.026170039Z,log,cloud-ingest,2026-11-17T00:21:31Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:32.546872429Z,log,cloud-ingest,2026-11-17T00:21:32Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:32.982225652Z,log,edge-ubs-agent,2026-11-17T00:21:32Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=c8a7148c papel=morador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:21:33.025020621Z,log,field-ubs,2026-11-17T00:21:33Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:21:33.921028101Z,log,cloud-ingest,2026-11-17T00:21:33Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:34.316543252Z,log,cloud-ingest,2026-11-17T00:21:34Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:35.076967614Z,log,field-escola,2026-11-17T00:21:35Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:36.106481132Z,log,cloud-ingest,2026-11-17T00:21:36Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:36.777686486Z,log,cloud-ingest,2026-11-17T00:21:36Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:37.484366999Z,log,cloud-ingest,2026-11-17T00:21:37Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:37.605655786Z,log,cloud-ingest,2026-11-17T00:21:37Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:37.875604286Z,log,cloud-ingest,2026-11-17T00:21:37Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:40.077416038Z,log,field-escola,2026-11-17T00:21:40Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:40.344092891Z,log,cloud-ingest,2026-11-17T00:21:40Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:41.061324925Z,log,cloud-ingest,2026-11-17T00:21:41Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:41.235200878Z,log,cloud-ingest,2026-11-17T00:21:41Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:41.460384816Z,log,cloud-ingest,2026-11-17T00:21:41Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:42.696355697Z,log,cloud-ingest,2026-11-17T00:21:42Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:44.688369865Z,log,cloud-ingest,2026-11-17T00:21:44Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:44.955359710Z,log,cloud-ingest,2026-11-17T00:21:44Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:45.078222121Z,log,field-escola,2026-11-17T00:21:45Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:45.298177776Z,log,cloud-ingest,2026-11-17T00:21:45Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:46.270189300Z,log,cloud-ingest,2026-11-17T00:21:46Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:47.027445910Z,log,cloud-ingest,2026-11-17T00:21:47Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:48.114829650Z,log,cloud-ingest,2026-11-17T00:21:48Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:48.889782530Z,log,cloud-ingest,2026-11-17T00:21:48Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:49.837785487Z,log,cloud-ingest,2026-11-17T00:21:49Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:50.079000492Z,log,field-escola,2026-11-17T00:21:50Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:50.387099598Z,log,cloud-ingest,2026-11-17T00:21:50Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:50.619194858Z,log,cloud-ingest,2026-11-17T00:21:50Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:50.718191118Z,log,field-abrigo,2026-11-17T00:21:50Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:21:51.159576267Z,log,cloud-ingest,2026-11-17T00:21:51Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:51.591823379Z,log,cloud-ingest,2026-11-17T00:21:51Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:51.773290764Z,log,cloud-ingest,2026-11-17T00:21:51Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:52.484097239Z,log,cloud-ingest,2026-11-17T00:21:52Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:54.767781858Z,log,cloud-ingest,2026-11-17T00:21:54Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:55.080839299Z,log,field-escola,2026-11-17T00:21:55Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:21:55.154970725Z,log,cloud-ingest,2026-11-17T00:21:55Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:55.328067961Z,log,cloud-ingest,2026-11-17T00:21:55Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:56.040567530Z,log,cloud-ingest,2026-11-17T00:21:56Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:56.957646154Z,log,cloud-ingest,2026-11-17T00:21:56Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:21:59.642777482Z,log,cloud-ingest,2026-11-17T00:21:59Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:00.087049034Z,log,field-escola,2026-11-17T00:22:00Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:22:00.256959091Z,log,cloud-ingest,2026-11-17T00:22:00Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:00.577587542Z,log,cloud-ingest,2026-11-17T00:22:00Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:01.391538439Z,log,cloud-ingest,2026-11-17T00:22:01Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:01.816970911Z,log,cloud-ingest,2026-11-17T00:22:01Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:01.905385495Z,log,cloud-ingest,2026-11-17T00:22:01Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:04.946515577Z,log,cloud-ingest,2026-11-17T00:22:04Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:05.087152444Z,log,field-escola,2026-11-17T00:22:05Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:22:05.411602351Z,log,cloud-ingest,2026-11-17T00:22:05Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:05.483576853Z,log,cloud-ingest,2026-11-17T00:22:05Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:06.844234678Z,log,cloud-ingest,2026-11-17T00:22:06Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:07.158067981Z,log,cloud-ingest,2026-11-17T00:22:07Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:09.692799115Z,log,edge-ubs-agent,2026-11-17T00:22:09Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=5b1d551f papel=- motivo=cracha_desconhecido
+2026-11-17T00:22:09.703534987Z,log,field-ubs,2026-11-17T00:22:09Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=cracha_desconhecido
+2026-11-17T00:22:10.087665346Z,log,field-escola,2026-11-17T00:22:10Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:22:10.403302358Z,log,cloud-ingest,2026-11-17T00:22:10Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:10.761585386Z,log,cloud-ingest,2026-11-17T00:22:10Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:11.557939043Z,log,cloud-ingest,2026-11-17T00:22:11Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:12+00:00,SOAR executada,isolar_container,vila-aurora-tools-run-811814c23a7b|vila-aurora_seg-iot-ubs risco=baixo por=automatico
+2026-11-17T00:22:12.017826194Z,log,cloud-ingest,2026-11-17T00:22:12Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:12.068495950Z,log,cloud-ingest,2026-11-17T00:22:12Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:12.210112067Z,log,edge-ubs-broker,2026-11-17T00:22:12Z: OpenSSL Error[0]: error:0A0000C7:SSL routines::peer did not return a certificate
+2026-11-17T00:22:12.210112067Z,ALERTA (c),edge-ubs-broker,Conexao sem certificado valido no edge-ubs-broker - origem 172.18.0.8 (vila-aurora-tools-run-811814c23a7b): did not return a certificate
+2026-11-17T00:22:13.972984823Z,log,cloud-ingest,2026-11-17T00:22:13Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:15.088266271Z,log,field-escola,2026-11-17T00:22:15Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:22:15.135491728Z,log,cloud-ingest,2026-11-17T00:22:15Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:15.591929916Z,log,cloud-ingest,2026-11-17T00:22:15Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:15.618550490Z,log,cloud-ingest,2026-11-17T00:22:15Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:17.391355242Z,log,cloud-ingest,2026-11-17T00:22:17Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:17.557792153Z,log,cloud-ingest,2026-11-17T00:22:17Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:20.089292358Z,log,field-escola,2026-11-17T00:22:20Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:22:20.981090152Z,log,cloud-ingest,2026-11-17T00:22:20Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:21.131956352Z,log,cloud-ingest,2026-11-17T00:22:21Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:21.706912157Z,log,cloud-ingest,2026-11-17T00:22:21Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:22.203189957Z,log,cloud-ingest,2026-11-17T00:22:22Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:22.228775326Z,log,cloud-ingest,2026-11-17T00:22:22Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:24.709936583Z,log,cloud-ingest,2026-11-17T00:22:24Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:25.090050242Z,log,field-escola,2026-11-17T00:22:25Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:22:25.095725443Z,log,field-abrigo,2026-11-17T00:22:25Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:22:25.267193257Z,log,cloud-ingest,2026-11-17T00:22:25Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:25.272267546Z,log,cloud-ingest,2026-11-17T00:22:25Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:25.805192252Z,log,cloud-ingest,2026-11-17T00:22:25Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:25.811270168Z,log,cloud-ingest,2026-11-17T00:22:25Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:27.579481052Z,log,cloud-ingest,2026-11-17T00:22:27Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:30.090604334Z,log,field-escola,2026-11-17T00:22:30Z INFO space=escola device=escola-bomba-01 publicado bomba=1estado
+2026-11-17T00:22:31.139594307Z,log,cloud-ingest,2026-11-17T00:22:31Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:31.872404503Z,log,cloud-ingest,2026-11-17T00:22:31Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:31.883355111Z,log,cloud-ingest,2026-11-17T00:22:31Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:32.387898721Z,log,cloud-ingest,2026-11-17T00:22:32Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:32.389964432Z,log,cloud-ingest,2026-11-17T00:22:32Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:32.901360991Z,log,field-escola,2026-11-17T00:22:32Z INFO space=escola COMANDO RECEBIDO device=escola-bomba-01 action=off by=painel:ana.op reason=teste
+2026-11-17T00:22:32.901360991Z,ALERTA (d),field-escola,Comando indevido para escola-bomba-01 (off) - emissor 'painel:ana.op' nao autorizado; so edge-escola-agent (regras locais) e o SOAR podem comandar atuadores
+2026-11-17T00:22:32.901777054Z,log,field-escola,2026-11-17T00:22:32Z WARNING space=escola device=escola-bomba-01 BOMBA DESLIGADA por painel:ana.op motivo=teste
+2026-11-17T00:22:33.152231232Z,log,field-escola,2026-11-17T00:22:33Z INFO space=escola COMANDO RECEBIDO device=escola-bomba-01 action=safe_mode by=soar reason=resposta_incidente
+2026-11-17T00:22:33.152256176Z,log,field-escola,2026-11-17T00:22:33Z WARNING space=escola device=escola-bomba-01 MODO SEGURO por 30 min: só aceita comandos de edge-escola-agent
+2026-11-17T00:22:34+00:00,SOAR executada,modo_seguro_atuador,escola:escola-bomba-01 risco=baixo por=automatico
+2026-11-17T00:22:34+00:00,SOAR executada,revogar_certificado,edge-escola-agent risco=alto por=julia
+2026-11-17T00:22:34.700339195Z,log,cloud-ingest,2026-11-17T00:22:34Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:35.091505208Z,log,field-escola,2026-11-17T00:22:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:22:35.237666554Z,log,cloud-ingest,2026-11-17T00:22:35Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:35.433837917Z,log,cloud-ingest,2026-11-17T00:22:35Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:35.447616921Z,log,cloud-ingest,2026-11-17T00:22:35Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:35.951887279Z,log,cloud-ingest,2026-11-17T00:22:35Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:35.955170668Z,log,cloud-ingest,2026-11-17T00:22:35Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:38.997133136Z,log,cloud-ingest,2026-11-17T00:22:38Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:40.092351467Z,log,field-escola,2026-11-17T00:22:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:22:41.844730399Z,log,cloud-ingest,2026-11-17T00:22:41Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:42.058032553Z,log,cloud-ingest,2026-11-17T00:22:42Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:42.662276780Z,log,cloud-ingest,2026-11-17T00:22:42Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:42.682732672Z,log,cloud-ingest,2026-11-17T00:22:42Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:42.691514395Z,log,cloud-ingest,2026-11-17T00:22:42Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:45.093712689Z,log,field-escola,2026-11-17T00:22:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:22:45.205352545Z,log,edge-ubs-agent,2026-11-17T00:22:45Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=30ef03de papel=morador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:22:45.208149371Z,log,field-ubs,2026-11-17T00:22:45Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:22:45.433020856Z,log,cloud-ingest,2026-11-17T00:22:45Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:45.772723586Z,log,cloud-ingest,2026-11-17T00:22:45Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:46.318051460Z,log,cloud-ingest,2026-11-17T00:22:46Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:46.323441399Z,log,cloud-ingest,2026-11-17T00:22:46Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:46.328898503Z,log,cloud-ingest,2026-11-17T00:22:46Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:49.040952300Z,log,field-abrigo,2026-11-17T00:22:49Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:22:49.398302951Z,log,cloud-ingest,2026-11-17T00:22:49Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:49.878632731Z,log,cloud-ingest,2026-11-17T00:22:49Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:49.895539343Z,log,cloud-ingest,2026-11-17T00:22:49Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:49.930860994Z,log,cloud-ingest,2026-11-17T00:22:49Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:50.094131347Z,log,field-escola,2026-11-17T00:22:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:22:50.426962562Z,log,cloud-ingest,2026-11-17T00:22:50Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:52.008468823Z,log,cloud-ingest,2026-11-17T00:22:52Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:52.904621508Z,log,cloud-ingest,2026-11-17T00:22:52Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:53.985210816Z,log,cloud-ingest,2026-11-17T00:22:53Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:55.095153100Z,log,field-escola,2026-11-17T00:22:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:22:55.573408139Z,log,cloud-ingest,2026-11-17T00:22:55Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:56.460381029Z,log,cloud-ingest,2026-11-17T00:22:56Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:56.461473191Z,log,cloud-ingest,2026-11-17T00:22:56Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:56.493824909Z,log,cloud-ingest,2026-11-17T00:22:56Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:22:57.611898965Z,log,cloud-ingest,2026-11-17T00:22:57Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:00.053315892Z,log,cloud-ingest,2026-11-17T00:23:00Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:00.067777376Z,log,cloud-ingest,2026-11-17T00:23:00Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:00.097198853Z,log,field-escola,2026-11-17T00:23:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:01.210339262Z,log,cloud-ingest,2026-11-17T00:23:01Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:02.192009505Z,log,cloud-ingest,2026-11-17T00:23:02Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:03.070083841Z,log,cloud-ingest,2026-11-17T00:23:03Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:04.299806587Z,log,field-abrigo,2026-11-17T00:23:04Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:23:04.781094493Z,log,cloud-ingest,2026-11-17T00:23:04Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:05.098416788Z,log,field-escola,2026-11-17T00:23:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:05.314291975Z,log,cloud-ingest,2026-11-17T00:23:05Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:05.765947456Z,log,cloud-ingest,2026-11-17T00:23:05Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:06.629837628Z,log,cloud-ingest,2026-11-17T00:23:06Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:06.636518004Z,log,cloud-ingest,2026-11-17T00:23:06Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:06.645813830Z,log,cloud-ingest,2026-11-17T00:23:06Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:08.933575898Z,log,cloud-ingest,2026-11-17T00:23:08Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:10.099058801Z,log,field-escola,2026-11-17T00:23:10Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:10.208899071Z,log,cloud-ingest,2026-11-17T00:23:10Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:10.216329978Z,log,cloud-ingest,2026-11-17T00:23:10Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:10.223075001Z,log,cloud-ingest,2026-11-17T00:23:10Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:12.384199702Z,log,cloud-ingest,2026-11-17T00:23:12Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:12.506767739Z,log,cloud-ingest,2026-11-17T00:23:12Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:15.099865008Z,log,field-escola,2026-11-17T00:23:15Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:15.987166178Z,log,cloud-ingest,2026-11-17T00:23:15Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:16.104035278Z,log,cloud-ingest,2026-11-17T00:23:16Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:16.843887476Z,log,cloud-ingest,2026-11-17T00:23:16Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:16.852650973Z,log,cloud-ingest,2026-11-17T00:23:16Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:16.853946136Z,log,cloud-ingest,2026-11-17T00:23:16Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:19.677539188Z,log,cloud-ingest,2026-11-17T00:23:19Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:20.100660556Z,log,field-escola,2026-11-17T00:23:20Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:20.221464150Z,log,cloud-ingest,2026-11-17T00:23:20Z INFO service=cloud-ingest lote agente=edge-escola-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:20.423021201Z,log,cloud-ingest,2026-11-17T00:23:20Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:20.427991229Z,log,cloud-ingest,2026-11-17T00:23:20Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:20.431367641Z,log,cloud-ingest,2026-11-17T00:23:20Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:22.564053402Z,log,cloud-ingest,2026-11-17T00:23:22Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:23.419930792Z,log,field-escola,2026-11-17T00:23:23Z WARNING space=escola device=escola-bomba-01 desconectado: Unspecified error
+2026-11-17T00:23:24.424169360Z,log,edge-escola-broker,2026-11-17T00:23:24Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:23:24.424169360Z,ALERTA (c),edge-escola-broker,Conexao sem certificado valido no edge-escola-broker - origem 172.21.0.5 (edge-escola-agent): certificate verify failed
+2026-11-17T00:23:24.432495817Z,log,edge-escola-broker,"2026-11-17T00:23:24Z: New client connected from 172.21.0.4:37735 as escola-bomba-01 (p2, c1, k30, u'escola-bomba-01')."
+2026-11-17T00:23:24.482111855Z,log,field-escola,2026-11-17T00:23:24Z INFO space=escola device=escola-bomba-01 conectado com mTLS a edge-escola-broker:8883
+2026-11-17T00:23:24.482607494Z,log,edge-escola-broker,2026-11-17T00:23:24Z: escola-bomba-01 1 va/escola/cmd/escola-bomba-01
+2026-11-17T00:23:24.701791024Z,log,edge-ubs-agent,2026-11-17T00:23:24Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=d357a0f2 papel=operador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:23:24.706301799Z,log,field-ubs,2026-11-17T00:23:24Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:23:25.101390358Z,log,field-escola,2026-11-17T00:23:25Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:26.138756203Z,log,cloud-ingest,2026-11-17T00:23:26Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:26.429730117Z,log,edge-escola-broker,2026-11-17T00:23:26Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:23:27.060731092Z,log,cloud-ingest,2026-11-17T00:23:27Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:27.061794137Z,log,cloud-ingest,2026-11-17T00:23:27Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:29.703940230Z,log,edge-horta-agent,2026-11-17T00:23:29Z INFO agent=edge-horta-agent LINK RESTABELECIDO via fibra apos 3s sem nuvem; reenviando o buffer (1 restantes)
+2026-11-17T00:23:29.832852371Z,log,cloud-ingest,2026-11-17T00:23:29Z WARNING service=cloud-ingest TLS RECUSADO ip=10.13.13.12 motivo=CERTIFICATE_VERIFY_FAILED
+2026-11-17T00:23:29.832852371Z,ALERTA (c),cloud-ingest,Agente sem certificado valido tentou enviar dados a nuvem - ip VPN 10.13.13.12 (edge-escola-agent) motivo=CERTIFICATE_VERIFY_FAILED
+2026-11-17T00:23:30+00:00,SOAR desfeita,encerrar_sessao_vpn,+nmJTWSXp35QDnZPOVsHRRxv/oB9EBUNSppiO1mwwic= risco=baixo por=automatico
+2026-11-17T00:23:30.102090380Z,log,field-escola,2026-11-17T00:23:30Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:30.107923225Z,log,cloud-ingest,2026-11-17T00:23:30Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:30.434329004Z,log,edge-escola-broker,2026-11-17T00:23:30Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:23:30.657000022Z,log,cloud-ingest,2026-11-17T00:23:30Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:30.668162373Z,log,cloud-ingest,2026-11-17T00:23:30Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:30.752451823Z,log,field-abrigo,2026-11-17T00:23:30Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:23:32.740048092Z,log,cloud-ingest,2026-11-17T00:23:32Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:32.745083948Z,log,edge-horta-agent,"2026-11-17T00:23:32Z INFO agent=edge-horta-agent RECONCILIACAO concluida: buffer vazio, nenhum evento perdido"
+2026-11-17T00:23:33.706958499Z,log,cloud-ingest,2026-11-17T00:23:33Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:34.236035470Z,log,cloud-ingest,2026-11-17T00:23:34Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:34.767298397Z,log,cloud-ingest,2026-11-17T00:23:34Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:35.102963909Z,log,field-escola,2026-11-17T00:23:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:36.312657364Z,log,cloud-ingest,2026-11-17T00:23:36Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:37.242735865Z,log,cloud-ingest,2026-11-17T00:23:37Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:37.247712253Z,log,cloud-ingest,2026-11-17T00:23:37Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:38.440952627Z,log,edge-escola-broker,2026-11-17T00:23:38Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:23:39.869170542Z,log,cloud-ingest,2026-11-17T00:23:39Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:40.103640725Z,log,field-escola,2026-11-17T00:23:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:40.412045708Z,log,cloud-ingest,2026-11-17T00:23:40Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:40.808596973Z,log,cloud-ingest,2026-11-17T00:23:40Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:40.815267741Z,log,cloud-ingest,2026-11-17T00:23:40Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:41.373263792Z,log,cloud-ingest,2026-11-17T00:23:41Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:44.985684303Z,log,cloud-ingest,2026-11-17T00:23:44Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:45.105696352Z,log,field-escola,2026-11-17T00:23:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:47.072286888Z,log,cloud-ingest,2026-11-17T00:23:47Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:47.446747677Z,log,cloud-ingest,2026-11-17T00:23:47Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:47.451508865Z,log,cloud-ingest,2026-11-17T00:23:47Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:50.106175712Z,log,field-escola,2026-11-17T00:23:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:50.667619328Z,log,cloud-ingest,2026-11-17T00:23:50Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:51.035666689Z,log,cloud-ingest,2026-11-17T00:23:51Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:51.068230438Z,log,cloud-ingest,2026-11-17T00:23:51Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:51.619864114Z,log,cloud-ingest,2026-11-17T00:23:51Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:53.882079596Z,log,edge-escola-agent,2026-11-17T00:23:53Z WARNING agent=edge-escola-agent WAN: fibra -> 4g (endpoint 172.22.0.2:51820) motivo=nuvem sem resposta ha 30s
+2026-11-17T00:23:54.446434788Z,log,edge-escola-broker,2026-11-17T00:23:54Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:23:55.106395157Z,log,field-escola,2026-11-17T00:23:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:23:55.209879191Z,log,cloud-ingest,2026-11-17T00:23:55Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:56.233940056Z,log,field-abrigo,2026-11-17T00:23:56Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:23:57.263498249Z,log,cloud-ingest,2026-11-17T00:23:57Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:57.678173408Z,log,cloud-ingest,2026-11-17T00:23:57Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:57.701975197Z,log,cloud-ingest,2026-11-17T00:23:57Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:58.784973480Z,log,cloud-ingest,2026-11-17T00:23:58Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:59.332134061Z,log,cloud-ingest,2026-11-17T00:23:59Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:23:59.880017613Z,log,cloud-ingest,2026-11-17T00:23:59Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:00.107241879Z,log,field-escola,2026-11-17T00:24:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:00.854045660Z,log,cloud-ingest,2026-11-17T00:24:00Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:01.275257182Z,log,cloud-ingest,2026-11-17T00:24:01Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:01.298319564Z,log,cloud-ingest,2026-11-17T00:24:01Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:01.761452170Z,log,edge-ubs-agent,2026-11-17T00:24:01Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=36505b6e papel=voluntario motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:24:01.763753468Z,log,field-ubs,2026-11-17T00:24:01Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:24:01.831246731Z,log,cloud-ingest,2026-11-17T00:24:01Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:04.888408230Z,log,cloud-ingest,2026-11-17T00:24:04Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:05.108208130Z,log,field-escola,2026-11-17T00:24:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:05.395870627Z,log,cloud-ingest,2026-11-17T00:24:05Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:06.464189917Z,log,cloud-ingest,2026-11-17T00:24:06Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:07.470660075Z,log,cloud-ingest,2026-11-17T00:24:07Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:08.260538169Z,log,field-abrigo,2026-11-17T00:24:08Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:24:10.029788386Z,log,cloud-ingest,2026-11-17T00:24:10Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:10.108872937Z,log,field-escola,2026-11-17T00:24:10Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:11.030516560Z,log,cloud-ingest,2026-11-17T00:24:11Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:11.484867003Z,log,cloud-ingest,2026-11-17T00:24:11Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:11.968033881Z,log,cloud-ingest,2026-11-17T00:24:11Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:15.064881399Z,log,cloud-ingest,2026-11-17T00:24:15Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:15.110105315Z,log,field-escola,2026-11-17T00:24:15Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:15.556279244Z,log,cloud-ingest,2026-11-17T00:24:15Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:16.663289903Z,log,cloud-ingest,2026-11-17T00:24:16Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:17.667674471Z,log,cloud-ingest,2026-11-17T00:24:17Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:18.592146646Z,log,field-abrigo,2026-11-17T00:24:18Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:24:20.111144736Z,log,field-escola,2026-11-17T00:24:20Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:20.226146991Z,log,cloud-ingest,2026-11-17T00:24:20Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:21.239768017Z,log,cloud-ingest,2026-11-17T00:24:21Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:21.645637974Z,log,cloud-ingest,2026-11-17T00:24:21Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:22.148240517Z,log,cloud-ingest,2026-11-17T00:24:22Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:23.950246391Z,log,edge-escola-agent,"2026-11-17T00:24:23Z ERROR agent=edge-escola-agent MODO DEGRADADO: nenhum link WAN responde; borda segue autonoma (regras e alarmes locais ativos), eventos no buffer=0"
+2026-11-17T00:24:23.953043552Z,log,edge-escola-agent,2026-11-17T00:24:23Z WARNING agent=edge-escola-agent WAN: degradado -> fibra (endpoint 172.26.0.2:51820) motivo=nuvem sem resposta ha 60s
+2026-11-17T00:24:24.455911991Z,log,edge-escola-broker,2026-11-17T00:24:24Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:24:24.823495475Z,log,cloud-ingest,2026-11-17T00:24:24Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:25.112092335Z,log,field-escola,2026-11-17T00:24:25Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:25.212558834Z,log,cloud-ingest,2026-11-17T00:24:25Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:25.382654737Z,log,cloud-ingest,2026-11-17T00:24:25Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:25.704499321Z,log,cloud-ingest,2026-11-17T00:24:25Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:26.832719667Z,log,cloud-ingest,2026-11-17T00:24:26Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:28.491128178Z,log,edge-ubs-agent,2026-11-17T00:24:28Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=7eed3d42 papel=morador motivo=cracha_bloqueado
+2026-11-17T00:24:28.494074335Z,log,field-ubs,2026-11-17T00:24:28Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=cracha_bloqueado
+2026-11-17T00:24:29.274201280Z,log,cloud-ingest,2026-11-17T00:24:29Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:30.112588707Z,log,field-escola,2026-11-17T00:24:30Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:30.426517933Z,log,cloud-ingest,2026-11-17T00:24:30Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:31.798466116Z,log,cloud-ingest,2026-11-17T00:24:31Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:31.984262803Z,log,cloud-ingest,2026-11-17T00:24:31Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:32.836883705Z,log,cloud-ingest,2026-11-17T00:24:32Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:35.113529386Z,log,field-escola,2026-11-17T00:24:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:35.361827172Z,log,cloud-ingest,2026-11-17T00:24:35Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:35.554104141Z,log,cloud-ingest,2026-11-17T00:24:35Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:36.403655567Z,log,cloud-ingest,2026-11-17T00:24:36Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:37.023346550Z,log,cloud-ingest,2026-11-17T00:24:37Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:40.114606979Z,log,field-escola,2026-11-17T00:24:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:40.597510057Z,log,cloud-ingest,2026-11-17T00:24:40Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:41.059969353Z,log,field-abrigo,2026-11-17T00:24:41Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:24:41.130830113Z,log,cloud-ingest,2026-11-17T00:24:41Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:41.949219911Z,log,cloud-ingest,2026-11-17T00:24:41Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:42.134105124Z,log,cloud-ingest,2026-11-17T00:24:42Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:42.994690654Z,log,cloud-ingest,2026-11-17T00:24:42Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:44.708347738Z,log,cloud-ingest,2026-11-17T00:24:44Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:45.115786669Z,log,field-escola,2026-11-17T00:24:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:45.514152691Z,log,cloud-ingest,2026-11-17T00:24:45Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:45.703457297Z,log,cloud-ingest,2026-11-17T00:24:45Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:46.556007258Z,log,cloud-ingest,2026-11-17T00:24:46Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:50.105372746Z,log,cloud-ingest,2026-11-17T00:24:50Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:50.115985454Z,log,field-escola,2026-11-17T00:24:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:51.299392077Z,log,cloud-ingest,2026-11-17T00:24:51Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:51.728026868Z,log,field-abrigo,2026-11-17T00:24:51Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:24:51.845175075Z,log,cloud-ingest,2026-11-17T00:24:51Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:52.094109668Z,log,cloud-ingest,2026-11-17T00:24:52Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:52.281264022Z,log,cloud-ingest,2026-11-17T00:24:52Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:54.009042899Z,log,edge-escola-agent,2026-11-17T00:24:54Z WARNING agent=edge-escola-agent WAN: degradado -> 4g (endpoint 172.22.0.2:51820) motivo=nuvem sem resposta ha 90s
+2026-11-17T00:24:54.460857868Z,log,edge-escola-broker,2026-11-17T00:24:54Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:24:55.116695166Z,log,field-escola,2026-11-17T00:24:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:24:55.411000962Z,log,cloud-ingest,2026-11-17T00:24:55Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:55.656567576Z,log,cloud-ingest,2026-11-17T00:24:55Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:55.823899300Z,log,edge-ubs-agent,2026-11-17T00:24:55Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=ea27aec7 papel=- motivo=cracha_desconhecido
+2026-11-17T00:24:55.827165320Z,log,field-ubs,2026-11-17T00:24:55Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=cracha_desconhecido
+2026-11-17T00:24:55.847083319Z,log,cloud-ingest,2026-11-17T00:24:55Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:24:56.687478062Z,log,cloud-ingest,2026-11-17T00:24:56Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:00.118264787Z,log,field-escola,2026-11-17T00:25:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:25:00.247380813Z,log,cloud-ingest,2026-11-17T00:25:00Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:01.995894868Z,log,cloud-ingest,2026-11-17T00:25:01Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:02.234809547Z,log,cloud-ingest,2026-11-17T00:25:02Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:02.419189035Z,log,cloud-ingest,2026-11-17T00:25:02Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:05.119335629Z,log,field-escola,2026-11-17T00:25:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:25:05.556139094Z,log,cloud-ingest,2026-11-17T00:25:05Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:05.791932544Z,log,cloud-ingest,2026-11-17T00:25:05Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:05.981352297Z,log,cloud-ingest,2026-11-17T00:25:05Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:25:06.834551625Z,log,cloud-ingest,2026-11-17T00:25:06Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:31.459759451Z,log,cloud-ingest,2026-11-17T00:39:31Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:32.335857888Z,log,cloud-ingest,2026-11-17T00:39:32Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:32.434355935Z,log,cloud-ingest,2026-11-17T00:39:32Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:34.972257661Z,log,field-abrigo,2026-11-17T00:39:34Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:39:35.042041448Z,log,cloud-ingest,2026-11-17T00:39:35Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:35.888928789Z,log,field-escola,2026-11-17T00:39:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:39:36.022604883Z,log,cloud-ingest,2026-11-17T00:39:36Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:37.100686039Z,log,cloud-ingest,2026-11-17T00:39:37Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:38.610899178Z,log,cloud-ingest,2026-11-17T00:39:38Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:39.062951925Z,log,cloud-ingest,2026-11-17T00:39:39Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:39.149926246Z,log,cloud-ingest,2026-11-17T00:39:39Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:40.667322605Z,log,cloud-ingest,2026-11-17T00:39:40Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:40.889671346Z,log,field-escola,2026-11-17T00:39:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:39:41.696655172Z,log,edge-ubs-agent,2026-11-17T00:39:41Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=f1a04b3b papel=operador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:39:41.700421432Z,log,field-ubs,2026-11-17T00:39:41Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:39:42.618993520Z,log,cloud-ingest,2026-11-17T00:39:42Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:42.626482853Z,log,cloud-ingest,2026-11-17T00:39:42Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:42.708122839Z,log,cloud-ingest,2026-11-17T00:39:42Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:45.890751824Z,log,field-escola,2026-11-17T00:39:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:39:46.182893206Z,log,cloud-ingest,2026-11-17T00:39:46Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:46.188330853Z,log,cloud-ingest,2026-11-17T00:39:46Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:46.274999074Z,log,cloud-ingest,2026-11-17T00:39:46Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:47.287042467Z,log,cloud-ingest,2026-11-17T00:39:47Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:49.841303156Z,log,cloud-ingest,2026-11-17T00:39:49Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:50.847522703Z,log,cloud-ingest,2026-11-17T00:39:50Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:50.891255827Z,log,field-escola,2026-11-17T00:39:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:39:51.501859667Z,log,field-abrigo,2026-11-17T00:39:51Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:39:52.795864492Z,log,cloud-ingest,2026-11-17T00:39:52Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:52.800693488Z,log,cloud-ingest,2026-11-17T00:39:52Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:53.403031703Z,log,cloud-ingest,2026-11-17T00:39:53Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:54.959542951Z,log,edge-escola-broker,2026-11-17T00:39:54Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:39:54.959542951Z,ALERTA (c),edge-escola-broker,Conexao sem certificado valido no edge-escola-broker - origem 172.21.0.5 (edge-escola-agent): certificate verify failed
+2026-11-17T00:39:55.891898376Z,log,field-escola,2026-11-17T00:39:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:39:56.366356757Z,log,cloud-ingest,2026-11-17T00:39:56Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:56.367646262Z,log,cloud-ingest,2026-11-17T00:39:56Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:56.966940259Z,log,cloud-ingest,2026-11-17T00:39:56Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:57.443591374Z,log,cloud-ingest,2026-11-17T00:39:57Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:39:57.446772379Z,log,edge-escola-agent,2026-11-17T00:39:57Z WARNING agent=edge-escola-agent WAN: degradado -> 4g (endpoint 172.22.0.2:51820) motivo=nuvem sem resposta ha 994s
+2026-11-17T00:40:00.540799351Z,log,cloud-ingest,2026-11-17T00:40:00Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:00.892696939Z,log,field-escola,2026-11-17T00:40:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:01.007911344Z,log,cloud-ingest,2026-11-17T00:40:01Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:02.692959784Z,log,edge-ubs-agent,2026-11-17T00:40:02Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=c8a7148c papel=morador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:40:02.736243894Z,log,field-ubs,2026-11-17T00:40:02Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:40:02.962729964Z,log,cloud-ingest,2026-11-17T00:40:02Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:02.963982857Z,log,cloud-ingest,2026-11-17T00:40:02Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:04.171877010Z,log,cloud-ingest,2026-11-17T00:40:04Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:04.709688873Z,log,cloud-ingest,2026-11-17T00:40:04Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:05.893588445Z,log,field-escola,2026-11-17T00:40:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:06.539577914Z,log,cloud-ingest,2026-11-17T00:40:06Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:06.542595756Z,log,cloud-ingest,2026-11-17T00:40:06Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:07.600256668Z,log,cloud-ingest,2026-11-17T00:40:07Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:08.275753430Z,log,cloud-ingest,2026-11-17T00:40:08Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:10.102514958Z,log,cloud-ingest,2026-11-17T00:40:10Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:10.642021610Z,log,cloud-ingest,2026-11-17T00:40:10Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:10.894298114Z,log,field-escola,2026-11-17T00:40:10Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:11.163019599Z,log,cloud-ingest,2026-11-17T00:40:11Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:11.836850476Z,log,cloud-ingest,2026-11-17T00:40:11Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:13.128287117Z,log,cloud-ingest,2026-11-17T00:40:13Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:15.400101080Z,log,cloud-ingest,2026-11-17T00:40:15Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:15.895397361Z,log,field-escola,2026-11-17T00:40:15Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:15.897901786Z,log,edge-ubs-agent,2026-11-17T00:40:15Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=15472ffb papel=morador motivo=cracha_bloqueado
+2026-11-17T00:40:15.902561648Z,log,field-ubs,2026-11-17T00:40:15Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=cracha_bloqueado
+2026-11-17T00:40:16.684778180Z,log,cloud-ingest,2026-11-17T00:40:16Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:17.224656165Z,log,cloud-ingest,2026-11-17T00:40:17Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:17.756139142Z,log,cloud-ingest,2026-11-17T00:40:17Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:18.955492767Z,log,cloud-ingest,2026-11-17T00:40:18Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:19.490059102Z,log,cloud-ingest,2026-11-17T00:40:19Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:20.780184965Z,log,cloud-ingest,2026-11-17T00:40:20Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:20.895985320Z,log,field-escola,2026-11-17T00:40:20Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:21.318143219Z,log,cloud-ingest,2026-11-17T00:40:21Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:23.063115109Z,log,cloud-ingest,2026-11-17T00:40:23Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:23.263095250Z,log,cloud-ingest,2026-11-17T00:40:23Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:24.653356840Z,log,field-abrigo,2026-11-17T00:40:24Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:40:24.967127630Z,log,edge-escola-broker,2026-11-17T00:40:24Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:40:25.897231579Z,log,field-escola,2026-11-17T00:40:25Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:26.625238872Z,log,cloud-ingest,2026-11-17T00:40:26Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:26.825990388Z,log,cloud-ingest,2026-11-17T00:40:26Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:27.365945919Z,log,cloud-ingest,2026-11-17T00:40:27Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:27.506676950Z,log,edge-escola-agent,2026-11-17T00:40:27Z WARNING agent=edge-escola-agent WAN: degradado -> fibra (endpoint 172.26.0.2:51820) motivo=nuvem sem resposta ha 1024s
+2026-11-17T00:40:27.902338776Z,log,cloud-ingest,2026-11-17T00:40:27Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:30.184938000Z,log,cloud-ingest,2026-11-17T00:40:30Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:30.897436956Z,log,field-escola,2026-11-17T00:40:30Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:30.964479617Z,log,cloud-ingest,2026-11-17T00:40:30Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:31.638532742Z,log,cloud-ingest,2026-11-17T00:40:31Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:33.492029730Z,log,cloud-ingest,2026-11-17T00:40:33Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:33.839265771Z,log,cloud-ingest,2026-11-17T00:40:33Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:34.466052618Z,log,cloud-ingest,2026-11-17T00:40:34Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:35.275582663Z,log,cloud-ingest,2026-11-17T00:40:35Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:35.899076712Z,log,field-escola,2026-11-17T00:40:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:37.120205645Z,log,cloud-ingest,2026-11-17T00:40:37Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:37.664837272Z,log,cloud-ingest,2026-11-17T00:40:37Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:38.039800284Z,log,cloud-ingest,2026-11-17T00:40:38Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:40.900101277Z,log,field-escola,2026-11-17T00:40:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:41.415403666Z,log,cloud-ingest,2026-11-17T00:40:41Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:41.602133400Z,log,cloud-ingest,2026-11-17T00:40:41Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:41.973704119Z,log,cloud-ingest,2026-11-17T00:40:41Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:43.744080847Z,log,cloud-ingest,2026-11-17T00:40:43Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:45.572211199Z,log,cloud-ingest,2026-11-17T00:40:45Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:45.801423160Z,log,edge-ubs-agent,2026-11-17T00:40:45Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=6db166e0 papel=morador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:40:45.805174122Z,log,field-ubs,2026-11-17T00:40:45Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:40:45.900723110Z,log,field-escola,2026-11-17T00:40:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:47.308900831Z,log,cloud-ingest,2026-11-17T00:40:47Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:48.100874182Z,log,cloud-ingest,2026-11-17T00:40:48Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:50.640482156Z,log,field-abrigo,2026-11-17T00:40:50Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:40:50.901460782Z,log,field-escola,2026-11-17T00:40:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:51.676929439Z,log,cloud-ingest,2026-11-17T00:40:51Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:52.155457111Z,log,cloud-ingest,2026-11-17T00:40:52Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:53.891488940Z,log,cloud-ingest,2026-11-17T00:40:53Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:54.973560147Z,log,edge-escola-broker,2026-11-17T00:40:54Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:40:55.237482749Z,log,cloud-ingest,2026-11-17T00:40:55Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:55.721374177Z,log,cloud-ingest,2026-11-17T00:40:55Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:55.769149130Z,log,cloud-ingest,2026-11-17T00:40:55Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:55.902155533Z,log,field-escola,2026-11-17T00:40:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:40:57.447785133Z,log,cloud-ingest,2026-11-17T00:40:57Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:40:57.587473699Z,log,edge-escola-agent,2026-11-17T00:40:57Z WARNING agent=edge-escola-agent WAN: degradado -> 4g (endpoint 172.22.0.2:51820) motivo=nuvem sem resposta ha 1054s
+2026-11-17T00:41:00.903345819Z,log,field-escola,2026-11-17T00:41:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:01.226663280Z,log,cloud-ingest,2026-11-17T00:41:01Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=8 novas=8 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:01.230545783Z,log,edge-horta-agent,2026-11-17T00:41:01Z INFO agent=edge-horta-agent LINK RESTABELECIDO via fibra apos 11s sem nuvem; reenviando o buffer (0 restantes)
+2026-11-17T00:41:01.230570515Z,log,edge-horta-agent,"2026-11-17T00:41:01Z INFO agent=edge-horta-agent RECONCILIACAO concluida: buffer vazio, nenhum evento perdido"
+2026-11-17T00:41:01.596376293Z,log,field-abrigo,2026-11-17T00:41:01Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:41:02.316959998Z,log,cloud-ingest,2026-11-17T00:41:02Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:02.390603062Z,log,cloud-ingest,2026-11-17T00:41:02Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:04.056854669Z,log,cloud-ingest,2026-11-17T00:41:04Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:04.797080388Z,log,cloud-ingest,2026-11-17T00:41:04Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:05.889936071Z,log,cloud-ingest,2026-11-17T00:41:05Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:05.903717185Z,log,field-escola,2026-11-17T00:41:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:05.951144997Z,log,cloud-ingest,2026-11-17T00:41:05Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:07.657462117Z,log,cloud-ingest,2026-11-17T00:41:07Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:08.362453695Z,log,cloud-ingest,2026-11-17T00:41:08Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:10.904572845Z,log,field-escola,2026-11-17T00:41:10Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:11.220880885Z,log,cloud-ingest,2026-11-17T00:41:11Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:11.941244352Z,log,cloud-ingest,2026-11-17T00:41:11Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:12.467820198Z,log,cloud-ingest,2026-11-17T00:41:12Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:12.527091612Z,log,cloud-ingest,2026-11-17T00:41:12Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:15.905569391Z,log,field-escola,2026-11-17T00:41:15Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:16.028946740Z,log,cloud-ingest,2026-11-17T00:41:16Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:16.086037551Z,log,cloud-ingest,2026-11-17T00:41:16Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:17.829298441Z,log,cloud-ingest,2026-11-17T00:41:17Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:20.906386520Z,log,field-escola,2026-11-17T00:41:20Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:21.395328101Z,log,cloud-ingest,2026-11-17T00:41:21Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:22.003039814Z,log,edge-ubs-agent,2026-11-17T00:41:22Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=a95a4593 papel=operador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:41:22.006834997Z,log,field-ubs,2026-11-17T00:41:22Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:41:22.614243365Z,log,cloud-ingest,2026-11-17T00:41:22Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:22.656787344Z,log,cloud-ingest,2026-11-17T00:41:22Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:24.968989594Z,log,cloud-ingest,2026-11-17T00:41:24Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:24.984304479Z,log,edge-escola-broker,2026-11-17T00:41:24Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:41:25.907681135Z,log,field-escola,2026-11-17T00:41:25Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:26.179760612Z,log,cloud-ingest,2026-11-17T00:41:26Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:26.241837354Z,log,cloud-ingest,2026-11-17T00:41:26Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:27.660847130Z,log,edge-escola-agent,2026-11-17T00:41:27Z WARNING agent=edge-escola-agent WAN: degradado -> fibra (endpoint 172.26.0.2:51820) motivo=nuvem sem resposta ha 1084s
+2026-11-17T00:41:28.538472577Z,log,cloud-ingest,2026-11-17T00:41:28Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:30.908814096Z,log,field-escola,2026-11-17T00:41:30Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:31.543674608Z,log,cloud-ingest,2026-11-17T00:41:31Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=8 novas=8 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:31.548906443Z,log,edge-horta-agent,2026-11-17T00:41:31Z INFO agent=edge-horta-agent LINK RESTABELECIDO via fibra apos 11s sem nuvem; reenviando o buffer (0 restantes)
+2026-11-17T00:41:31.548965707Z,log,edge-horta-agent,"2026-11-17T00:41:31Z INFO agent=edge-horta-agent RECONCILIACAO concluida: buffer vazio, nenhum evento perdido"
+2026-11-17T00:41:32.107143912Z,log,cloud-ingest,2026-11-17T00:41:32Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:32.830583329Z,log,cloud-ingest,2026-11-17T00:41:32Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:32.867899247Z,log,cloud-ingest,2026-11-17T00:41:32Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:35.102155546Z,log,cloud-ingest,2026-11-17T00:41:35Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:35.909905231Z,log,field-escola,2026-11-17T00:41:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:36.391513816Z,log,cloud-ingest,2026-11-17T00:41:36Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:36.423612864Z,log,cloud-ingest,2026-11-17T00:41:36Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:38.696113603Z,log,cloud-ingest,2026-11-17T00:41:38Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:38.729393391Z,log,cloud-ingest,2026-11-17T00:41:38Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:39.234348344Z,log,cloud-ingest,2026-11-17T00:41:39Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:39.744072296Z,log,field-abrigo,2026-11-17T00:41:39Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:41:39.999751128Z,log,cloud-ingest,2026-11-17T00:41:39Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:40.547912024Z,log,cloud-ingest,2026-11-17T00:41:40Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:40.910611893Z,log,field-escola,2026-11-17T00:41:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:42.294712340Z,log,cloud-ingest,2026-11-17T00:41:42Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:42.791121861Z,log,cloud-ingest,2026-11-17T00:41:42Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:42.995996779Z,log,cloud-ingest,2026-11-17T00:41:42Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:45.911464162Z,log,field-escola,2026-11-17T00:41:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:46.379152748Z,log,cloud-ingest,2026-11-17T00:41:46Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:46.582229085Z,log,cloud-ingest,2026-11-17T00:41:46Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:47.159640795Z,log,cloud-ingest,2026-11-17T00:41:47Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:48.898133919Z,log,cloud-ingest,2026-11-17T00:41:48Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:49.987263962Z,log,cloud-ingest,2026-11-17T00:41:49Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:50.157862963Z,log,cloud-ingest,2026-11-17T00:41:50Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:50.738039210Z,log,cloud-ingest,2026-11-17T00:41:50Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:50.912075233Z,log,field-escola,2026-11-17T00:41:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:52.468575796Z,log,cloud-ingest,2026-11-17T00:41:52Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:53.565051771Z,log,cloud-ingest,2026-11-17T00:41:53Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:54.965518591Z,log,edge-ubs-agent,2026-11-17T00:41:54Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=dd66cfda papel=voluntario motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:41:54.971096086Z,log,field-ubs,2026-11-17T00:41:54Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:41:54.990254469Z,log,edge-escola-broker,2026-11-17T00:41:54Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:41:55.912671449Z,log,field-escola,2026-11-17T00:41:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:41:56.056215705Z,log,cloud-ingest,2026-11-17T00:41:56Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:56.788715912Z,log,cloud-ingest,2026-11-17T00:41:56Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:57.167937514Z,log,cloud-ingest,2026-11-17T00:41:57Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:57.321194032Z,log,cloud-ingest,2026-11-17T00:41:57Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:41:57.745495684Z,log,edge-escola-agent,2026-11-17T00:41:57Z WARNING agent=edge-escola-agent WAN: degradado -> 4g (endpoint 172.22.0.2:51820) motivo=nuvem sem resposta ha 1114s
+2026-11-17T00:42:00.370775435Z,log,cloud-ingest,2026-11-17T00:42:00Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:00.754960768Z,log,cloud-ingest,2026-11-17T00:42:00Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:00.910003400Z,log,cloud-ingest,2026-11-17T00:42:00Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:00.913144444Z,log,field-escola,2026-11-17T00:42:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:02.655755596Z,log,cloud-ingest,2026-11-17T00:42:02Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:04.317522111Z,log,cloud-ingest,2026-11-17T00:42:04Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:05.915152985Z,log,field-escola,2026-11-17T00:42:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:06.224973172Z,log,cloud-ingest,2026-11-17T00:42:06Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:06.953023779Z,log,cloud-ingest,2026-11-17T00:42:06Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:07.501564568Z,log,cloud-ingest,2026-11-17T00:42:07Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:07.866487425Z,log,field-escola,2026-11-17T00:42:07Z INFO space=escola COMANDO RECEBIDO device=escola-bomba-01 action=off by=painel:ana.op reason=agendamento_alterado
+2026-11-17T00:42:07.866487425Z,ALERTA (d),field-escola,Comando indevido para escola-bomba-01 (off) - emissor 'painel:ana.op' nao autorizado; so edge-escola-agent (regras locais) e o SOAR podem comandar atuadores
+2026-11-17T00:42:07.867533001Z,log,field-escola,2026-11-17T00:42:07Z WARNING space=escola device=escola-bomba-01 COMANDO IGNORADO (modo seguro) action=off by=painel:ana.op
+2026-11-17T00:42:07.927832442Z,log,cloud-ingest,2026-11-17T00:42:07Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:08.350088663Z,log,field-escola,2026-11-17T00:42:08Z INFO space=escola COMANDO RECEBIDO device=escola-bomba-01 action=safe_mode by=soar reason=resposta_incidente
+2026-11-17T00:42:08.350633197Z,log,field-escola,2026-11-17T00:42:08Z WARNING space=escola device=escola-bomba-01 MODO SEGURO por 30 min: só aceita comandos de edge-escola-agent
+2026-11-17T00:42:09.464+00:00,SOAR executada,modo_seguro_atuador,escola:escola-bomba-01 risco=baixo por=automatico
+2026-11-17T00:42:09.466+00:00,SOAR rejeitada,revogar_certificado,edge-escola-agent risco=alto por=julia
+2026-11-17T00:42:10.539235616Z,log,cloud-ingest,2026-11-17T00:42:10Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:10.916191734Z,log,field-escola,2026-11-17T00:42:10Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:11.099891178Z,log,cloud-ingest,2026-11-17T00:42:11Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:11.495930585Z,log,cloud-ingest,2026-11-17T00:42:11Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:12.816994773Z,log,cloud-ingest,2026-11-17T00:42:12Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:15.075063496Z,log,cloud-ingest,2026-11-17T00:42:15Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:15.917007266Z,log,field-escola,2026-11-17T00:42:15Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:16.331132739Z,log,field-abrigo,2026-11-17T00:42:16Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:42:16.394314455Z,log,cloud-ingest,2026-11-17T00:42:16Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:17.154338458Z,log,cloud-ingest,2026-11-17T00:42:17Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:17.702090383Z,log,cloud-ingest,2026-11-17T00:42:17Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:18.674437634Z,log,cloud-ingest,2026-11-17T00:42:18Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:19.232740904Z,log,cloud-ingest,2026-11-17T00:42:19Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:20.750623003Z,log,cloud-ingest,2026-11-17T00:42:20Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:20.917663255Z,log,field-escola,2026-11-17T00:42:20Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:21.317734496Z,log,cloud-ingest,2026-11-17T00:42:21Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:22.828734054Z,log,cloud-ingest,2026-11-17T00:42:22Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:22.992017722Z,log,cloud-ingest,2026-11-17T00:42:22Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:24.998602211Z,log,edge-escola-broker,2026-11-17T00:42:24Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:42:25.346050879Z,log,edge-ubs-agent,2026-11-17T00:42:25Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=30ef03de papel=morador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:42:25.348667805Z,log,field-ubs,2026-11-17T00:42:25Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:42:25.918193931Z,log,field-escola,2026-11-17T00:42:25Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:26.390261219Z,log,cloud-ingest,2026-11-17T00:42:26Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:26.558890160Z,log,cloud-ingest,2026-11-17T00:42:26Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:27.373288543Z,log,cloud-ingest,2026-11-17T00:42:27Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:27.809181827Z,log,edge-escola-agent,2026-11-17T00:42:27Z WARNING agent=edge-escola-agent WAN: degradado -> fibra (endpoint 172.26.0.2:51820) motivo=nuvem sem resposta ha 1144s
+2026-11-17T00:42:27.937775420Z,log,cloud-ingest,2026-11-17T00:42:27Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:29.974312406Z,log,cloud-ingest,2026-11-17T00:42:29Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:30.919240339Z,log,field-escola,2026-11-17T00:42:30Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:30.945856845Z,log,cloud-ingest,2026-11-17T00:42:30Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:31.512031835Z,log,cloud-ingest,2026-11-17T00:42:31Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:33.161336280Z,log,cloud-ingest,2026-11-17T00:42:33Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:33.565696111Z,log,cloud-ingest,2026-11-17T00:42:33Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:35.919904052Z,log,field-escola,2026-11-17T00:42:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:36.755366790Z,log,cloud-ingest,2026-11-17T00:42:36Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:37.119307420Z,log,cloud-ingest,2026-11-17T00:42:37Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:37.536155188Z,log,cloud-ingest,2026-11-17T00:42:37Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:38.102331572Z,log,cloud-ingest,2026-11-17T00:42:38Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:40.742288670Z,log,cloud-ingest,2026-11-17T00:42:40Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:40.920586918Z,log,field-escola,2026-11-17T00:42:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:41.094488685Z,log,cloud-ingest,2026-11-17T00:42:41Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:41.685900965Z,log,cloud-ingest,2026-11-17T00:42:41Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:43.353719924Z,log,cloud-ingest,2026-11-17T00:42:43Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:44.316072967Z,log,cloud-ingest,2026-11-17T00:42:44Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:45.275307455Z,log,cloud-ingest,2026-11-17T00:42:45Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:45.816387809Z,log,cloud-ingest,2026-11-17T00:42:45Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:45.922017054Z,log,field-escola,2026-11-17T00:42:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:46.913987016Z,log,cloud-ingest,2026-11-17T00:42:46Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:47.560389861Z,log,field-abrigo,2026-11-17T00:42:47Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:42:47.681833157Z,log,cloud-ingest,2026-11-17T00:42:47Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:47.888406808Z,log,cloud-ingest,2026-11-17T00:42:47Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:49.397788232Z,log,cloud-ingest,2026-11-17T00:42:49Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:50.924119498Z,log,field-escola,2026-11-17T00:42:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:51.268961534Z,log,cloud-ingest,2026-11-17T00:42:51Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:51.493918742Z,log,cloud-ingest,2026-11-17T00:42:51Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:52.971900961Z,log,cloud-ingest,2026-11-17T00:42:52Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:53.529057074Z,log,cloud-ingest,2026-11-17T00:42:53Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:55.002813673Z,log,edge-escola-broker,2026-11-17T00:42:55Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:42:55.002813673Z,ALERTA (c),edge-escola-broker,Conexao sem certificado valido no edge-escola-broker - origem 172.21.0.5 (edge-escola-agent): certificate verify failed
+2026-11-17T00:42:55.071293805Z,log,cloud-ingest,2026-11-17T00:42:55Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:55.924656842Z,log,field-escola,2026-11-17T00:42:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:42:56.547803180Z,log,cloud-ingest,2026-11-17T00:42:56Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:57.112616864Z,log,cloud-ingest,2026-11-17T00:42:57Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:57.876316936Z,log,edge-escola-agent,2026-11-17T00:42:57Z WARNING agent=edge-escola-agent WAN: degradado -> 4g (endpoint 172.22.0.2:51820) motivo=nuvem sem resposta ha 1174s
+2026-11-17T00:42:57.889633119Z,log,cloud-ingest,2026-11-17T00:42:57Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:58.238225152Z,log,edge-ubs-agent,2026-11-17T00:42:58Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=59da2c05 papel=morador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:42:58.243276386Z,log,field-ubs,2026-11-17T00:42:58Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:42:58.644591940Z,log,cloud-ingest,2026-11-17T00:42:58Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:42:59.185144423Z,log,cloud-ingest,2026-11-17T00:42:59Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:00.117767230Z,log,cloud-ingest,2026-11-17T00:43:00Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:00.651491533Z,log,cloud-ingest,2026-11-17T00:43:00Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:00.668776388Z,log,cloud-ingest,2026-11-17T00:43:00Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:00.925421923Z,log,field-escola,2026-11-17T00:43:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:01.197251933Z,log,cloud-ingest,2026-11-17T00:43:01Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:01.485132077Z,log,cloud-ingest,2026-11-17T00:43:01Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:02.741152062Z,log,cloud-ingest,2026-11-17T00:43:02Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:05.926062870Z,log,field-escola,2026-11-17T00:43:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:06.318342281Z,log,cloud-ingest,2026-11-17T00:43:06Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:06.392274765Z,log,field-abrigo,2026-11-17T00:43:06Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:43:07.230543068Z,log,cloud-ingest,2026-11-17T00:43:07Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:07.856654487Z,log,cloud-ingest,2026-11-17T00:43:07Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:08.088030946Z,log,cloud-ingest,2026-11-17T00:43:08Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:09.884059619Z,log,cloud-ingest,2026-11-17T00:43:09Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:10.790053745Z,log,cloud-ingest,2026-11-17T00:43:10Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:10.927012827Z,log,field-escola,2026-11-17T00:43:10Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:11.419556431Z,log,cloud-ingest,2026-11-17T00:43:11Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:11.654852698Z,log,cloud-ingest,2026-11-17T00:43:11Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:13.455951250Z,log,cloud-ingest,2026-11-17T00:43:13Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:15.219038190Z,log,cloud-ingest,2026-11-17T00:43:15Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:15.928209630Z,log,field-escola,2026-11-17T00:43:15Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:17.054379431Z,log,cloud-ingest,2026-11-17T00:43:17Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:17.449956545Z,log,cloud-ingest,2026-11-17T00:43:17Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:20.636909093Z,log,cloud-ingest,2026-11-17T00:43:20Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:20.929346143Z,log,field-escola,2026-11-17T00:43:20Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:21.014853531Z,log,cloud-ingest,2026-11-17T00:43:21Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:21.820939643Z,log,cloud-ingest,2026-11-17T00:43:21Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:24.196985670Z,log,cloud-ingest,2026-11-17T00:43:24Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:25.009515048Z,log,edge-escola-broker,2026-11-17T00:43:25Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:43:25.382494255Z,log,cloud-ingest,2026-11-17T00:43:25Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:25.929808766Z,log,field-escola,2026-11-17T00:43:25Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:27.590705998Z,log,cloud-ingest,2026-11-17T00:43:27Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:27.756647393Z,log,cloud-ingest,2026-11-17T00:43:27Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:27.944951830Z,log,edge-escola-agent,2026-11-17T00:43:27Z WARNING agent=edge-escola-agent WAN: degradado -> fibra (endpoint 172.26.0.2:51820) motivo=nuvem sem resposta ha 1204s
+2026-11-17T00:43:28.280855150Z,log,edge-ubs-agent,2026-11-17T00:43:28Z INFO agent=edge-ubs-agent ACESSO NEGADO leitor=ubs-acesso-01 cracha=a029ccb8 papel=morador motivo=sem_autorizacao_neste_espaco
+2026-11-17T00:43:28.283411003Z,log,field-ubs,2026-11-17T00:43:28Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=deny by=edge-ubs-agent reason=sem_autorizacao_neste_espaco
+2026-11-17T00:43:30.930936830Z,log,field-escola,2026-11-17T00:43:30Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:31.067680819Z,log,cloud-ingest,2026-11-17T00:43:31Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=4 novas=4 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:31.071757657Z,log,edge-ubs-agent,2026-11-17T00:43:31Z INFO agent=edge-ubs-agent LINK RESTABELECIDO via fibra apos 13s sem nuvem; reenviando o buffer (1 restantes)
+2026-11-17T00:43:31.146742441Z,log,cloud-ingest,2026-11-17T00:43:31Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:31.328107509Z,log,cloud-ingest,2026-11-17T00:43:31Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:31.630750968Z,log,cloud-ingest,2026-11-17T00:43:31Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:31.640702767Z,log,edge-ubs-agent,"2026-11-17T00:43:31Z INFO agent=edge-ubs-agent RECONCILIACAO concluida: buffer vazio, nenhum evento perdido"
+2026-11-17T00:43:31.969180506Z,log,cloud-ingest,2026-11-17T00:43:31Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:34.904566005Z,log,cloud-ingest,2026-11-17T00:43:34Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:35.532054030Z,log,cloud-ingest,2026-11-17T00:43:35Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:35.937873898Z,log,field-escola,2026-11-17T00:43:35Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:37.796406845Z,log,cloud-ingest,2026-11-17T00:43:37Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:38.223142087Z,log,cloud-ingest,2026-11-17T00:43:38Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:38.496427591Z,log,cloud-ingest,2026-11-17T00:43:38Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:40.938680277Z,log,field-escola,2026-11-17T00:43:40Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:41.381156768Z,log,cloud-ingest,2026-11-17T00:43:41Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:41.813591468Z,log,cloud-ingest,2026-11-17T00:43:41Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:42.095231063Z,log,cloud-ingest,2026-11-17T00:43:42Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:42.168181989Z,log,cloud-ingest,2026-11-17T00:43:42Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:42.617568708Z,log,field-abrigo,2026-11-17T00:43:42Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:43:44.957728152Z,log,cloud-ingest,2026-11-17T00:43:44Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:45.493989474Z,log,cloud-ingest,2026-11-17T00:43:45Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:45.655303014Z,log,cloud-ingest,2026-11-17T00:43:45Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:45.751827659Z,log,cloud-ingest,2026-11-17T00:43:45Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:45.939491107Z,log,field-escola,2026-11-17T00:43:45Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:46.030007868Z,log,cloud-ingest,2026-11-17T00:43:46Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:48.440224013Z,log,cloud-ingest,2026-11-17T00:43:48Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:49.227801946Z,log,cloud-ingest,2026-11-17T00:43:49Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:49.387014335Z,log,field-ubs,2026-11-17T00:43:49Z INFO space=ubs COMANDO RECEBIDO device=ubs-acesso-01 action=unlock by=edge-ubs-agent reason=ok
+2026-11-17T00:43:50.940533159Z,log,field-escola,2026-11-17T00:43:50Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:52.056304180Z,log,cloud-ingest,2026-11-17T00:43:52Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:52.331092541Z,log,cloud-ingest,2026-11-17T00:43:52Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:52.626250658Z,log,cloud-ingest,2026-11-17T00:43:52Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:52.828496921Z,log,cloud-ingest,2026-11-17T00:43:52Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:55.016027721Z,log,edge-escola-broker,2026-11-17T00:43:55Z: OpenSSL Error[0]: error:0A000086:SSL routines::certificate verify failed
+2026-11-17T00:43:55.089589648Z,log,edge-escola-agent,2026-11-17T00:43:55Z INFO agent=edge-escola-agent LINK RESTABELECIDO via fibra apos 1228s sem nuvem; reenviando o buffer (0 restantes)
+2026-11-17T00:43:55.909932111Z,log,cloud-ingest,2026-11-17T00:43:55Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:55.940884562Z,log,field-escola,2026-11-17T00:43:55Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:43:56.258904207Z,log,cloud-ingest,2026-11-17T00:43:56Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:56.397486643Z,log,cloud-ingest,2026-11-17T00:43:56Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:58.659282212Z,log,cloud-ingest,2026-11-17T00:43:58Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:43:59.963274185Z,log,cloud-ingest,2026-11-17T00:43:59Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:00.942132089Z,log,field-escola,2026-11-17T00:44:00Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:44:02.231155168Z,log,cloud-ingest,2026-11-17T00:44:02Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:02.516423013Z,log,cloud-ingest,2026-11-17T00:44:02Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:02.848129840Z,log,cloud-ingest,2026-11-17T00:44:02Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:03.534949623Z,log,cloud-ingest,2026-11-17T00:44:03Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:05.942406749Z,log,field-escola,2026-11-17T00:44:05Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:44:06.073649161Z,log,cloud-ingest,2026-11-17T00:44:06Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:06.418819802Z,log,cloud-ingest,2026-11-17T00:44:06Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:07.096953993Z,log,cloud-ingest,2026-11-17T00:44:07Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:08.808711779Z,log,cloud-ingest,2026-11-17T00:44:08Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:10.694732526Z,log,cloud-ingest,2026-11-17T00:44:10Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:10.943133995Z,log,field-escola,2026-11-17T00:44:10Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:44:12.413682057Z,log,cloud-ingest,2026-11-17T00:44:12Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:12.710183110Z,log,cloud-ingest,2026-11-17T00:44:12Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:12.999666180Z,log,cloud-ingest,2026-11-17T00:44:12Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:14.285513243Z,log,cloud-ingest,2026-11-17T00:44:14Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=2 novas=2 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:15.944611025Z,log,field-escola,2026-11-17T00:44:15Z INFO space=escola device=escola-bomba-01 publicado bomba=0estado
+2026-11-17T00:44:16.188245840Z,log,field-abrigo,2026-11-17T00:44:16Z INFO space=abrigo COMANDO RECEBIDO device=abrigo-acesso-01 action=unlock by=edge-abrigo-agent reason=ok
+2026-11-17T00:44:16.289977455Z,log,cloud-ingest,2026-11-17T00:44:16Z INFO service=cloud-ingest lote agente=edge-centro-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:16.563287848Z,log,cloud-ingest,2026-11-17T00:44:16Z INFO service=cloud-ingest lote agente=edge-abrigo-agent recebidas=3 novas=3 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:17.864780466Z,log,cloud-ingest,2026-11-17T00:44:17Z INFO service=cloud-ingest lote agente=edge-horta-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0
+2026-11-17T00:44:19.010763655Z,log,cloud-ingest,2026-11-17T00:44:19Z INFO service=cloud-ingest lote agente=edge-ubs-agent recebidas=1 novas=1 duplicadas=0 rejeitadas=0

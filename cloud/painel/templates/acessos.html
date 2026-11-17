@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Acessos{% endblock %}
+{% block content %}
+<h1>Registro de acessos</h1>
+<p>Os crachás aparecem só como pseudônimo (HMAC). O identificador real não sai da borda (LGPD).</p>
+<table>
+  <caption>Últimos 100 acessos</caption>
+  <thead><tr><th scope="col">Horário (UTC)</th><th scope="col">Espaço</th><th scope="col">Leitor</th><th scope="col">Crachá (pseudônimo)</th><th scope="col">Papel</th><th scope="col">Decisão</th><th scope="col">Motivo</th></tr></thead>
+  <tbody>
+  {% for r in rows %}
+    <tr><td>{{ r.ts.strftime('%d/%m %H:%M:%S') }}</td><td>{{ r.space }}</td><td>{{ r.device_id }}</td><td><code>{{ r.badge }}</code></td><td>{{ r.papel or '-' }}</td>
+      <td>{% if r.decision == 'liberado' %}<span aria-hidden="true">✓</span> LIBERADO{% else %}<span aria-hidden="true">✗</span> NEGADO{% endif %}</td><td>{{ r.reason }}</td></tr>
+  {% else %}<tr><td colspan="7">Nenhum acesso registrado.</td></tr>{% endfor %}
+  </tbody>
+</table>
+{% endblock %}

@@ -312,6 +312,29 @@ services:
     networks: [seg-servicos]
     restart: unless-stopped
 
+  # Painel de supervisão: HTTPS só em 127.0.0.1 do host (não exposto à rede).
+  # Lê o banco com o usuário painel_reader (somente SELECT).
+  painel:
+    <<: *host-user
+    build: ./cloud/painel
+    container_name: painel
+    environment:
+      TZ: UTC
+      DB_HOST: postgres
+      DB_NAME: vilaaurora
+      DB_USER: painel_reader
+      DB_PASSWORD: ${PAINEL_DB_PASSWORD:?defina PAINEL_DB_PASSWORD no .env}
+      PAINEL_SECRET_KEY: ${PAINEL_SECRET_KEY:?defina PAINEL_SECRET_KEY no .env}
+      USERS_DB: /data/painel.db
+    volumes:
+      - ./pki/out/certs/painel:/certs:ro
+      - ./data/painel:/data
+    ports:
+      - "127.0.0.1:8443:8443"
+    networks: [seg-operadores, seg-servicos]
+    depends_on: [postgres]
+    restart: unless-stopped
+
   # ============================================ FERRAMENTAS DE TESTE (sob demanda)
   tools:
     <<: *host-user
@@ -338,6 +361,8 @@ networks:
   seg-wan-4g:    {internal: true}
   # Serviços da nuvem (gateway/ingestão e banco). Sem acesso externo.
   seg-servicos:  {internal: true}
+  # Operadores: única rede com porta publicada (painel em 127.0.0.1:8443).
+  seg-operadores: {}
   # Saída para a internet: só a ponte do Wokwi (e as ferramentas de teste).
   seg-wan: {}
 
